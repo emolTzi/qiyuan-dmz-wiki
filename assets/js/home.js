@@ -20,7 +20,7 @@
   cv.width=CW*dpr;cv.height=CH*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
 
   const clamp=(v,a,b)=>v<a?a:v>b?b:v;
-  const edgeFade=rho=>Math.max(0,Math.min(Math.min(1,(rho-DIN)/7),Math.min(1,(DOUT-rho)/22)));
+  const edgeFade=rho=>Math.max(0,Math.min(Math.min(1,(rho-DIN)/7),Math.min(1,(DOUT-rho)/30)));
 
   /* 盘粒子：内密外疏、开普勒式差速自转 */
   const NR=30,NT=76,pts=[];
@@ -60,6 +60,9 @@
   ringGrad.addColorStop(0,'rgba(255,240,205,.95)');
   ringGrad.addColorStop(.5,'rgba(255,190,110,.55)');
   ringGrad.addColorStop(1,'rgba(200,110,50,.35)');
+  /* 暗化晕：黑洞遮蔽背景光，与星空交融 */
+  const haloGrad=ctx.createRadialGradient(CX,CY,R*.7,CX,CY,R*3.4);
+  haloGrad.addColorStop(0,'rgba(2,4,10,.42)');haloGrad.addColorStop(.45,'rgba(2,4,10,.2)');haloGrad.addColorStop(1,'rgba(2,4,10,0)');
 
   let pulse=0;                                    // 吞噬脉冲（0..1）
   const fr=new Array(NT*NR*5);                    // 前半盘绘制缓冲 [x,y,sz,col,al]×n
@@ -67,6 +70,10 @@
 
   function drawBH(dt){
     ctx.clearRect(0,0,CW,CH);
+    /* 先铺暗化晕，让黑洞沉入星空而非贴在上面 */
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+    ctx.fillStyle=haloGrad;
+    ctx.beginPath();ctx.arc(CX,CY,R*3.4,0,7);ctx.fill();
     ctx.globalCompositeOperation='lighter';
     let fn=0;
     for(const p of pts){
@@ -158,6 +165,42 @@
       {x:br.left+br.width/2,y:br.top+br.height/2,r:R*(br.width/CW)};
   }
 
+  /* ---------- 标题文字引力透镜（SVG 位移贴图，黑洞掠过处文字被弯折） ---------- */
+  const lensImg=document.getElementById('gravLensMap');
+  const LMS=260;let lensOn=false;
+  if(lensImg&&!REDUCED){
+    const C=LMS/2,S=52,RC=40;
+    const mc=document.createElement('canvas');mc.width=mc.height=LMS;
+    const mctx=mc.getContext('2d'),idat=mctx.createImageData(LMS,LMS),px=idat.data;
+    for(let y=0;y<LMS;y++)for(let x=0;x<LMS;x++){
+      const dx=x-C,dy=y-C,d=Math.sqrt(dx*dx+dy*dy);
+      let m=0;
+      if(d>1){m=Math.min(26,RC*RC/d);                 // 光线偏折 ∝ 1/d
+        if(d>112)m*=Math.max(0,1-(d-112)/34);          // 贴图边缘衰减到 0
+      }
+      const o=(y*LMS+x)*4;
+      px[o]  =clamp(128-(dx/d||0)*m/S*255,0,255);
+      px[o+1]=clamp(128-(dy/d||0)*m/S*255,0,255);
+      px[o+2]=128;px[o+3]=255;
+    }
+    mctx.putImageData(idat,0,0);
+    const url=mc.toDataURL('image/png');
+    lensImg.setAttribute('href',url);
+    try{lensImg.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href',url);}catch(e){}
+  }
+  function updateLens(){
+    if(!lensImg||REDUCED)return;
+    const br=bh.getBoundingClientRect(),tvp=title.getBoundingClientRect();
+    const mds=LMS*(br.width/CW);
+    const lx=br.left+br.width/2-tvp.left-mds/2, ly=br.top+br.height/2-tvp.top-mds/2;
+    const overlap=lx>-mds&&ly>-mds&&lx<tvp.width&&ly<tvp.height;
+    if(overlap){
+      if(!lensOn){title.style.filter='url(#gravLens)';lensOn=true;}
+      lensImg.setAttribute('x',lx);lensImg.setAttribute('y',ly);
+      lensImg.setAttribute('width',mds);lensImg.setAttribute('height',mds);
+    }else if(lensOn){title.style.filter='none';lensOn=false;}
+  }
+
   /* ---------- 主循环 ---------- */
   let bhX=innerWidth/2,bhY=200,lastT=0;
   function frame(now){
@@ -174,6 +217,7 @@
     bh.style.zIndex=behind?2:4;
     bh.style.opacity=behind?.78:1;
     broadcastBH();
+    updateLens();
     drawBH(dt);
 
     for(const b of balls){

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>祈愿龙珠 · 全种族 WIKI — 宇宙星港</title>
-<meta name="description" content="祈愿龙珠（DragonMineZ 2.1.3 魔改版）全种族玩家 Wiki：以宇宙探索的方式浏览种族、形态、气功、技能与职业的全部数据。">
+<title>祈愿龙珠 IDW · 全种族 WIKI — 宇宙星港</title>
+<meta name="description" content="祈愿龙珠 Invoke:DragonWish（IDW，DragonMineZ 2.1.3 魔改版）全种族玩家 Wiki：以宇宙探索的方式浏览种族、形态、气功、技能与职业的全部数据。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -22,9 +22,9 @@
   <div id="blackhole"><canvas class="bh-cv"></canvas></div>
 
   <div id="homeTitle">
-    <div class="hero-tag reveal"><span class="dot"></span>DRAGONMINEZ 2.1.3 · 祈愿魔改版 · 玩家数据手册</div>
+    <div class="hero-tag reveal"><span class="dot"></span>INVOKE:DRAGONWISH · DRAGONMINEZ 2.1.3 魔改版 · 玩家数据手册</div>
     <h1 class="hero-title reveal" data-text="祈愿龙珠" data-delay="1">祈愿龙珠</h1>
-    <div class="hero-sub reveal" data-delay="2">FULL RACE DATABASE · 全种族 WIKI</div>
+    <div class="hero-sub reveal" data-delay="2">IDW · FULL RACE DATABASE · 全种族 WIKI</div>
     <p class="hero-desc reveal" data-delay="3">这里是<b style="color:#ffd9a8">祈愿宇宙</b>的星港。黑洞在群星间巡游，七颗龙珠在轨道上漂浮——穿过下方的星门，即可抵达任何一片你想探索的星域。</p>
     <div class="hero-counters reveal" data-delay="3">
       <div class="hc"><b id="cRaces" data-to="0">0</b><span>种族</span></div>
@@ -55,13 +55,10 @@
       <a class="portal-card panel reveal" style="--pc:#3ee2ff" href="races.html">
         <span class="pt-ico">◉</span><h3>种族星系</h3><div class="pt-n">RACE GALAXY</div>
         <p>14 颗种族母星的完整档案：初始六维、成长系数、种族技能与全部形态。</p></a>
-      <a class="portal-card panel reveal" data-delay="1" style="--pc:#ff7a18" href="forms.html">
-        <span class="pt-ico">◎</span><h3>形态星环</h3><div class="pt-n">FORM RING</div>
-        <p>界王拳、究极、自在极意、自我极意——环绕所有种族的通用形态星环。</p></a>
-      <a class="portal-card panel reveal" data-delay="2" style="--pc:#ffc233" href="ki.html">
+      <a class="portal-card panel reveal" data-delay="1" style="--pc:#ffc233" href="ki.html">
         <span class="pt-ico">☄</span><h3>气功星云</h3><div class="pt-n">KI NEBULA</div>
         <p>56 门可学气功的完整星图：动作描述、伤害倍率、施法与冷却全收录。</p></a>
-      <a class="portal-card panel reveal" data-delay="3" style="--pc:#ff5d5d" href="strikes.html">
+      <a class="portal-card panel reveal" data-delay="2" style="--pc:#ff5d5d" href="strikes.html">
         <span class="pt-ico">✹</span><h3>近战陨石带</h3><div class="pt-n">STRIKE BELT</div>
         <p>龙拳、狼牙风风拳、界王拳攻击——8 门近身爆发打击技。</p></a>
       <a class="portal-card panel reveal" style="--pc:#a06bff" href="skills.html">
@@ -79,6 +76,14 @@
     </div>
   </div>
 </section>
+
+<!-- 文字引力透镜滤镜（黑洞掠过标题时扭曲文字） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="gravLens" filterUnits="userSpaceOnUse" x="-1000" y="-1000" width="5000" height="5000">
+    <feImage id="gravLensMap" preserveAspectRatio="none" result="lensmap"/>
+    <feDisplacementMap in="SourceGraphic" in2="lensmap" scale="52" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/cosmos.js"></script>

@@ -115,7 +115,7 @@ function formGroupHTML(g){
   const idx=RACES.findIndex(r=>r.id===id);
   if(idx<0){location.replace('races.html');return;}
   const r=RACES[idx];
-  document.title=`${r.name} · 种族图鉴 — 祈愿龙珠 WIKI`;
+  document.title=`${r.name} · 种族图鉴 — 祈愿龙珠 IDW`;
   const statsBars=r.stats.map((v,i)=>barRow(STAT_KEYS[i],v,5,STAT_META[i].color)).join('');
   const growthBars=r.growth.map((v,i)=>barRow(GROWTH_KEYS[i],v,2,'#3ee2ff')).join('');
   const tp=r.tp.map(([g,arr])=>`<span class="tag ${arr[0]===-1?'rd':'gold'}">${g}：${arr.map(p=>p===-1?'任务解锁':p.toLocaleString()).join(' / ')}</span>`).join('');
@@ -152,6 +152,11 @@ function formGroupHTML(g){
       <div class="rp-block panel reveal" style="margin-bottom:18px"><h4>形态技能 TP 售价</h4>
         <div class="rp-chips">${tp}</div></div>
       ${groups}
+      <div class="rp-block panel reveal" style="padding:6px 0 0;border:none;background:none;box-shadow:none">
+        <h4 style="margin-bottom:4px">通用形态 · 全种族星环</h4>
+        <p class="ft-note" style="margin-top:0">界王拳、究极、自在极意、自我极意等形态环绕所有种族开放（个别形态有种族限制，以各组「适用」标注为准）。</p>
+      </div>
+      ${universalGroupsHTML()}
       <div class="race-pager">
         <a class="btn btn-ghost" href="race.html?r=${prev.id}">⟵ ${prev.name}</a>
         <a class="btn btn-primary" href="races.html">返回种族星系</a>
@@ -161,10 +166,9 @@ function formGroupHTML(g){
   observeReveals(host);
 })();
 
-/* ---------------- 通用形态（forms.html） ---------------- */
-(function renderUniversal(){
-  const host=$('#uniForms');if(!host)return;
-  host.innerHTML=UNIVERSAL_GROUPS.map(g=>{
+/* ---------------- 通用形态（并入每个种族详情页） ---------------- */
+function universalGroupsHTML(){
+  return UNIVERSAL_GROUPS.map(g=>{
     if(g.absorption){
       return `<div class="form-group reveal"><div class="fg-head"><h5>${g.name}</h5>
         <span class="fg-count">128 形态</span><span class="fg-tp">适用：<b>${g.who}</b></span></div>
@@ -177,7 +181,7 @@ function formGroupHTML(g){
       ${formTable(g.list)}
       <p class="ft-note">▸ ${g.note}</p></div>`;
   }).join('');
-})();
+}
 
 /* ---------------- 弹窗 ---------------- */
 const modalRoot=document.createElement('div');modalRoot.id='modal';document.body.appendChild(modalRoot);

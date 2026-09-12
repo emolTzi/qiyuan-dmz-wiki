@@ -10,7 +10,7 @@ const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------------- 站点地图 ---------------- */
 const NAV=[
-  ['index.html','首页'],['races.html','种族'],['forms.html','形态'],
+  ['index.html','首页'],['races.html','种族'],
   ['ki.html','气功'],['strikes.html','近战'],['skills.html','技能'],
   ['classes.html','职业'],['advanced.html','进阶'],['guide.html','属性'],
 ];
@@ -27,7 +27,7 @@ const BALL_SVG=(()=>{ // 龙珠 SVG 生成器（n 星）
   const nav=document.createElement('nav');nav.id='topnav';
   nav.innerHTML=`<a class="brand" href="index.html">
       <svg class="brand-ball" viewBox="0 0 64 64"><defs><radialGradient id="bb" cx="35%" cy="30%"><stop offset="0%" stop-color="#ffd97a"/><stop offset="100%" stop-color="#e8520a"/></radialGradient></defs><circle cx="32" cy="32" r="30" fill="url(#bb)"/><polygon points="32,18 35.2,27 44.6,27.1 37,33 40,42.3 32,36.6 24,42.3 27,33 19.4,27.1 28.8,27" fill="#c41e14"/></svg>
-      <span class="brand-txt"><b>祈愿龙珠</b><span>QIYUAN DMZ WIKI</span></span></a>
+      <span class="brand-txt"><b>祈愿龙珠</b><span>INVOKE:DRAGONWISH · IDW</span></span></a>
     <div class="links">${NAV.map(([h,t])=>`<a class="nav-link${h===here?' active':''}" href="${h}">${t}</a>`).join('')}</div>`;
   document.body.prepend(nav);
   const pb=document.createElement('div');pb.id='progressBar';document.body.prepend(pb);
@@ -50,15 +50,15 @@ const BALL_SVG=(()=>{ // 龙珠 SVG 生成器（n 星）
         <li>▸ 标「任务解锁」的条目无法直接用 TP 购买</li></ul></div>
       <div><h6>声明</h6><p>本站为非官方玩家资料站，仅作数据查询参考；游戏内实际数值以服务器当前版本为准。Dragon Ball 相关版权归原作所有。</p></div>
     </div>
-    <div class="foot-bottom"><span>QIYUAN DMZ WIKI · 2026-09 数据快照</span>
+    <div class="foot-bottom"><span>IDW · INVOKE:DRAGONWISH · 2026-09 数据快照</span>
       <span class="fbs"><svg width="14" height="14" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#ff7a18"/><polygon points="32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8" fill="#c41e14"/></svg>集齐七颗龙珠，召唤神龙</span></div></div>`;
   document.body.appendChild(f);
 })();
 
-/* ---------------- 星野（视差） ---------------- */
+/* ---------------- 星野 ---------------- */
 (function stars(){
   const cv=$('#stars');if(!cv)return;const ctx=cv.getContext('2d');
-  let W,H,layers=[];let mx=0,my=0;
+  let W,H,layers=[];
   function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;
     layers=[0.15,0.4,0.8].map((depth,li)=>Array.from({length:Math.min(70,W*H/26000)},()=>({
       x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.2+.3)*(0.5+depth),
@@ -66,12 +66,11 @@ const BALL_SVG=(()=>{ // 龙珠 SVG 生成器（n 星）
       hue:Math.random()<.1?35:(Math.random()<.5?215:265),depth})));
   }
   resize();addEventListener('resize',resize);
-  addEventListener('mousemove',e=>{mx=e.clientX/W-.5;my=e.clientY/H-.5;},{passive:true});
   (function loop(){ctx.clearRect(0,0,W,H);
     const BH=window.__BH,RE=BH?BH.r*1.9:0;                 // 引力透镜：爱因斯坦半径
     for(const layer of layers)for(const s of layer){s.tw+=.02;s.y+=s.sp;if(s.y>H+4)s.y=-2;
       const a=.2+.6*Math.abs(Math.sin(s.tw))*(0.4+s.depth*0.75);
-      let sx=s.x-mx*28*s.depth,sy=s.y-my*20*s.depth,m=1,gx=0,gy=0,gm=0,hasG=false;
+      let sx=s.x,sy=s.y,m=1,gx=0,gy=0,gm=0,hasG=false;
       if(BH){const dx=sx-BH.x,dy=sy-BH.y,d2=dx*dx+dy*dy;
         if(d2<25*BH.r*BH.r&&d2>0.25){
           const d=Math.sqrt(d2),sq=Math.sqrt(d*d+4*RE*RE);
