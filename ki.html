@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>气功星云 · 气功库 — 祈愿龙珠 WIKI</title>
+<meta name="description" content="56 门可学习气功的完整档案：动作描述、伤害倍率、施法时间、冷却与出售导师，支持类型筛选与搜索。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page" id="ki"><div class="wrap">
+  <header class="page-hero">
+    <a class="crumb" href="index.html">← 返回星港</a>
+    <h1>气功星云</h1><div class="en">Ki Attack Database</div>
+    <p class="lead">56 门可学习气功漂浮在这片星云里。<b>点击任意气功卡片</b>展开它的完整档案：动作描述、伤害倍率、类型修正、综合威力、施法时间、冷却与出售导师。按类型筛选或直接搜索名字。</p>
+  </header>
+  <div class="ki-tools reveal">
+    <div id="kiFilters" class="ki-filters"></div>
+    <label class="ki-search"><span style="color:var(--dim2)">⌕</span><input id="kiSearch" type="text" placeholder="搜索气功：中文名 / 英文名 / 类型…"></label>
+  </div>
+  <div class="info-cards">
+    <div class="info-card panel reveal"><span class="corner tl"></span><span class="corner br"></span>
+      <h4>类型伤害修正</h4>
+      <table><tbody id="kiTypeMult"></tbody></table>
+    </div>
+    <div class="info-card panel reveal" data-delay="1"><span class="corner tl"></span><span class="corner br"></span>
+      <h4>施法时间与移动限制</h4>
+      <table><tbody id="kiCast"></tbody></table>
+    </div>
+    <div class="info-card panel reveal" data-delay="2"><span class="corner tl"></span><span class="corner br"></span>
+      <h4>Boss 专属（不可学习）</h4>
+      <ul><li>剧情 Boss 额外持有 <b>11 门</b>玩家不可学习的气功：哆哆波、10倍龟派气功、复仇死亡球、超级加力炮、大爆炸冲撞、黄金死亡球、爆魔烈气弹、黑色龟派气功、超级黑色龟派气功、消抹加农炮、欧米伽爆破。</li></ul>
+    </div>
+  </div>
+  <div class="ki-group-title"><h4>基础气功 <span class="fg-count" style="margin-left:8px">×<span id="kiBaseCount">0</span></span></h4><div class="line"></div></div>
+  <div id="kiBaseGrid" class="ki-grid"></div>
+  <div class="ki-group-title"><h4>高阶气功 <span class="fg-count" style="margin-left:8px">×<span id="kiExtraCount">0</span></span></h4><div class="line"></div></div>
+  <div id="kiExtraGrid" class="ki-grid"></div>
+</div></main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/cosmos.js"></script>
+<script src="assets/js/wiki.js"></script>
+</body>
+</html>

@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>祈愿龙珠 · 全种族 WIKI — DragonMineZ 祈愿魔改版</title>
-<meta name="description" content="祈愿龙珠（DragonMineZ 2.1.3 魔改版）全种族玩家 Wiki：种族初始属性、形态倍率、被动、气功库、技能与职业数据一览。">
+<title>祈愿龙珠 · 全种族 WIKI — 宇宙星港</title>
+<meta name="description" content="祈愿龙珠（DragonMineZ 2.1.3 魔改版）全种族玩家 Wiki：以宇宙探索的方式浏览种族、形态、气功、技能与职业的全部数据。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%23ffd97a'/%3E%3Cstop offset='100%25' stop-color='%23e8520a'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -16,36 +16,16 @@
 <canvas id="stars"></canvas>
 <div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
 <div class="bg-grid"></div>
-<div id="progressBar"></div>
 
-<!-- ================= 导航 ================= -->
-<nav id="topnav">
-  <a class="brand" href="#home">
-    <svg class="brand-ball" viewBox="0 0 64 64"><defs><radialGradient id="bb" cx="35%" cy="30%"><stop offset="0%" stop-color="#ffd97a"/><stop offset="100%" stop-color="#e8520a"/></radialGradient></defs><circle cx="32" cy="32" r="30" fill="url(#bb)"/><polygon points="32,18 35.2,27 44.6,27.1 37,33 40,42.3 32,36.6 24,42.3 27,33 19.4,27.1 28.8,27" fill="#c41e14"/></svg>
-    <span class="brand-txt"><b>祈愿龙珠</b><span>QIYUAN DMZ WIKI</span></span>
-  </a>
-  <div class="links">
-    <a class="nav-link" href="#home">首页</a>
-    <a class="nav-link" href="#basics">属性</a>
-    <a class="nav-link" href="#races">种族</a>
-    <a class="nav-link" href="#universal">通用形态</a>
-    <a class="nav-link" href="#ki">气功</a>
-    <a class="nav-link" href="#strikes">近战</a>
-    <a class="nav-link" href="#skills">技能</a>
-    <a class="nav-link" href="#classes">职业</a>
-    <a class="nav-link" href="#advanced">进阶</a>
-  </div>
-</nav>
+<!-- ================= 宇宙场景 ================= -->
+<section id="scene">
+  <div id="blackhole"><i class="bh-lens"></i><i class="bh-diskwrap"><i class="bh-disk"></i></i><i class="bh-ring"></i><i class="bh-core"></i></div>
 
-<!-- ================= HERO ================= -->
-<section id="home">
-  <div class="hero-radar"></div>
-  <div id="dballs"></div>
-  <div class="hero-inner">
+  <div id="homeTitle">
     <div class="hero-tag reveal"><span class="dot"></span>DRAGONMINEZ 2.1.3 · 祈愿魔改版 · 玩家数据手册</div>
     <h1 class="hero-title reveal" data-text="祈愿龙珠" data-delay="1">祈愿龙珠</h1>
     <div class="hero-sub reveal" data-delay="2">FULL RACE DATABASE · 全种族 WIKI</div>
-    <p class="hero-desc reveal" data-delay="3">基于服务端运行配置整理的<b style="color:#ffd9a8">面向玩家</b>的全量数据档案：种族初始六维、全部形态倍率与被动、气功库、技能、职业与进阶系统 —— 数据即战力，祝武运昌隆。</p>
+    <p class="hero-desc reveal" data-delay="3">这里是<b style="color:#ffd9a8">祈愿宇宙</b>的星港。黑洞在群星间巡游，七颗龙珠在轨道上漂浮——穿过下方的星门，即可抵达任何一片你想探索的星域。</p>
     <div class="hero-counters reveal" data-delay="3">
       <div class="hc"><b id="cRaces" data-to="0">0</b><span>种族</span></div>
       <div class="hc"><b id="cForms" data-to="0" data-suffix="+">0</b><span>形态</span></div>
@@ -55,212 +35,53 @@
       <div class="hc"><b id="cClass" data-to="0">0</b><span>职业</span></div>
     </div>
     <div class="hero-cta reveal" data-delay="4">
-      <a class="btn btn-primary" href="#races">进入种族图鉴 ⟶</a>
-      <a class="btn btn-ghost" href="#ki">查阅气功库</a>
+      <a class="btn btn-primary" href="#portals">跃迁进入 · 星图</a>
+      <a class="btn btn-ghost" href="races.html">直连种族星系</a>
     </div>
   </div>
+
   <div class="scroll-hint">SCROLL</div>
 </section>
 
-<!-- ================= 01 属性与资源 ================= -->
-<section id="basics" class="chapter">
+<!-- ================= 星门 ================= -->
+<section id="portals" class="portal-sec">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-index">01</div>
-      <div class="sec-title"><h2>属性与资源</h2><span class="en">Attributes &amp; Resources</span></div>
+      <div class="sec-index">✦</div>
+      <div class="sec-title"><h2>星图导航</h2><span class="en">Stargate Map</span></div>
       <div class="sec-scan"></div>
     </div>
-    <p class="sec-lead reveal">一切构筑的地基。六维属性决定输出与生存，五项资源驱动战斗循环 —— 其中 <b>SPD 速度</b>是本服魔改的核心属性，前期收益极高，建议优先投入。</p>
-    <div class="stat-grid">
-      <div class="stat-card panel reveal"><span class="corner tl"></span><span class="corner br"></span>
-        <div class="sc-top"><span class="sc-badge" style="color:#ff7a18">力</span><h3>力量<small>STR · STRENGTH</small></h3></div>
-        <p>近战伤害与打击攻击伤害的重要来源（在打击公式中占 25% 权重）。</p>
-      </div>
-      <div class="stat-card panel hot reveal" data-delay="1"><span class="hot-ribbon">改版核心</span><span class="corner tl"></span><span class="corner br"></span>
-        <div class="sc-top"><span class="sc-badge" style="color:#3ee2ff">速</span><h3>速度<small>SPD · SPEED</small></h3></div>
-        <p>本服最重要的改版属性（旧称 SKP）。打击/连招伤害的主属性，同时换算为移动速度、攻击速度、冷却缩减、气功施法缩减、突进距离与闪避。前期投入收益极高：投入 1% 上限即先拿走 20% 收益。</p>
-      </div>
-      <div class="stat-card panel reveal" data-delay="2"><span class="corner tl"></span><span class="corner br"></span>
-        <div class="sc-top"><span class="sc-badge" style="color:#a06bff">抗</span><h3>抗性<small>RES · RESISTANCE</small></h3></div>
-        <p>减伤属性。形态对 RES 的倍率取「(DEF倍率 + STM倍率) ÷ 2」。</p>
-      </div>
-      <div class="stat-card panel reveal"><span class="corner tl"></span><span class="corner br"></span>
-        <div class="sc-top"><span class="sc-badge" style="color:#59ffa0">体</span><h3>体质<small>VIT · VITALITY</small></h3></div>
-        <p>生命上限与生命回复。HP = baseHp5 + VIT × hp5VitScaling（本服实际 ×0.5）。</p>
-      </div>
-      <div class="stat-card panel reveal" data-delay="1"><span class="corner tl"></span><span class="corner br"></span>
-        <div class="sc-top"><span class="sc-badge" style="color:#ffc233">气</span><h3>气功强度<small>PWR · KI POWER</small></h3></div>
-        <p>气弹 / 波 / 光束等一切气功伤害的强度属性。</p>
-      </div>
-      <div class="stat-card panel reveal" data-delay="2"><span class="corner tl"></span><span class="corner br"></span>
-        <div class="sc-top"><span class="sc-badge" style="color:#ff5d9e">能</span><h3>能量<small>ENE · ENERGY</small></h3></div>
-        <p>气（Ki/EP）上限与气回复。EP = baseEp5 + ENE × ep5EneScaling。</p>
-      </div>
-    </div>
-    <div class="res-row">
-      <div class="res-card panel reveal"><span class="res-ico">❤</span><div><b>HP 生命</b><span>基础 5 + VIT×0.06（实际生效 ×0.5）</span></div></div>
-      <div class="res-card panel reveal" data-delay="1"><span class="res-ico">✦</span><div><b>EP 气</b><span>基础 5 + ENE×0.05，变身 / 气功 / 飞行消耗</span></div></div>
-      <div class="res-card panel reveal" data-delay="2"><span class="res-ico">⚡</span><div><b>SP 体力</b><span>基础 14 + STM×0.15，冲刺 / 闪避 / 打击消耗</span></div></div>
-      <div class="res-card panel reveal" data-delay="3"><span class="res-ico">◈</span><div><b>架势</b><span>被打击时的破防条，归零眩晕 3 秒</span></div></div>
-      <div class="res-card panel reveal" data-delay="4"><span class="res-ico">✪</span><div><b>TP 训练点</b><span>技能货币：命中 / 挖矿 / 移动 / 合成均可获得</span></div></div>
+    <div class="portal-grid">
+      <a class="portal-card panel reveal" style="--pc:#3ee2ff" href="races.html">
+        <span class="pt-ico">◉</span><h3>种族星系</h3><div class="pt-n">RACE GALAXY</div>
+        <p>14 颗种族母星的完整档案：初始六维、成长系数、种族技能与全部形态。</p></a>
+      <a class="portal-card panel reveal" data-delay="1" style="--pc:#ff7a18" href="forms.html">
+        <span class="pt-ico">◎</span><h3>形态星环</h3><div class="pt-n">FORM RING</div>
+        <p>界王拳、究极、自在极意、自我极意——环绕所有种族的通用形态星环。</p></a>
+      <a class="portal-card panel reveal" data-delay="2" style="--pc:#ffc233" href="ki.html">
+        <span class="pt-ico">☄</span><h3>气功星云</h3><div class="pt-n">KI NEBULA</div>
+        <p>56 门可学气功的完整星图：动作描述、伤害倍率、施法与冷却全收录。</p></a>
+      <a class="portal-card panel reveal" data-delay="3" style="--pc:#ff5d5d" href="strikes.html">
+        <span class="pt-ico">✹</span><h3>近战陨石带</h3><div class="pt-n">STRIKE BELT</div>
+        <p>龙拳、狼牙风风拳、界王拳攻击——8 门近身爆发打击技。</p></a>
+      <a class="portal-card panel reveal" style="--pc:#a06bff" href="skills.html">
+        <span class="pt-ico">✦</span><h3>技能星座</h3><div class="pt-n">SKILL CONSTELLATION</div>
+        <p>22 门通用与特殊技能、TP 获取途径、17 位导师的销售清单。</p></a>
+      <a class="portal-card panel reveal" data-delay="1" style="--pc:#59ffa0" href="classes.html">
+        <span class="pt-ico">⬡</span><h3>职业星轨</h3><div class="pt-n">CLASS ORBITS</div>
+        <p>11 条职业轨道：初始加成、成长曲线与职业被动的完整对比。</p></a>
+      <a class="portal-card panel reveal" data-delay="2" style="--pc:#ff5d9e" href="advanced.html">
+        <span class="pt-ico">⌬</span><h3>进阶虫洞</h3><div class="pt-n">WORMHOLE</div>
+        <p>合体、突变体、气超载、种族专属打击技——通往深层机制的虫洞。</p></a>
+      <a class="portal-card panel reveal" data-delay="3" style="--pc:#5eead4" href="guide.html">
+        <span class="pt-ico">⌖</span><h3>属性基石</h3><div class="pt-n">FOUNDATION</div>
+        <p>六维属性与五项资源：探索宇宙前必须先读懂的物理法则。</p></a>
     </div>
   </div>
 </section>
-
-<!-- ================= 02 种族图鉴 ================= -->
-<section id="races" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">02</div>
-      <div class="sec-title"><h2>种族图鉴</h2><span class="en">Race Archive</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">已实装的全部可玩种族（含 7 个暗影龙子种族）。点击卡片或下方选项卡切换：每个种族给出<b>初始六维</b>、<b>成长系数</b>、<b>种族技能</b>与<b>全部形态的倍率 / 消耗 / 被动</b>。</p>
-    <div id="raceGrid" class="race-grid"></div>
-    <div id="raceDetail">
-      <div id="raceTabs" class="race-tabs"></div>
-      <div id="racePanels"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 03 通用形态 ================= -->
-<section id="universal" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">03</div>
-      <div class="sec-title"><h2>通用形态</h2><span class="en">Universal Forms</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">跨种族共享的形态系统：<b>界王拳</b>（全种族爆发叠加）、<b>究极 / 自在极意 / 自我极意</b>（神之技）、种族限定的<b>神形态</b>与<b>细胞样本</b>，以及魔人专属的 <b>128 条吸收形态</b>。</p>
-    <div id="uniForms"></div>
-  </div>
-</section>
-
-<!-- ================= 04 气功库 ================= -->
-<section id="ki" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">04</div>
-      <div class="sec-title"><h2>气功库</h2><span class="en">Ki Attack Database</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">全部可学习气功（玩家技）。按 <b>11 种气功类型</b>筛选或输入名称检索；卡片标注伤害倍率、冷却、TP 售价与出售导师。</p>
-    <div class="ki-tools reveal">
-      <div id="kiFilters" class="ki-filters"></div>
-      <label class="ki-search"><span style="color:var(--dim2)">⌕</span><input id="kiSearch" type="text" placeholder="搜索气功：中文名 / 英文名 / ID…"></label>
-    </div>
-    <div class="info-cards">
-      <div class="info-card panel reveal"><span class="corner tl"></span><span class="corner br"></span>
-        <h4>类型伤害倍率</h4>
-        <table><tbody id="kiTypeMult"></tbody></table>
-      </div>
-      <div class="info-card panel reveal" data-delay="1"><span class="corner tl"></span><span class="corner br"></span>
-        <h4>施法时间与移动限制</h4>
-        <table><tbody id="kiCast"></tbody></table>
-      </div>
-      <div class="info-card panel reveal" data-delay="2"><span class="corner tl"></span><span class="corner br"></span>
-        <h4>Boss 专属（不可学习）</h4>
-        <ul><li>剧情 Boss 从 ID 22 起额外持有 <b>11 个</b>玩家不可学习的气功：哆哆波、10倍龟派气功、复仇死亡球、超级加力炮、大爆炸冲撞、黄金死亡球、爆魔烈气弹、黑色龟派气功、超级黑色龟派气功、消抹加农炮、欧米伽爆破。</li></ul>
-      </div>
-    </div>
-    <div class="ki-group-title"><h4>基础气功 <span class="fg-count" style="margin-left:8px">×<span id="kiBaseCount">0</span></span></h4><div class="line"></div></div>
-    <div id="kiBaseGrid" class="ki-grid"></div>
-    <div class="ki-group-title"><h4>高阶气功 <span class="fg-count" style="margin-left:8px">×<span id="kiExtraCount">0</span></span></h4><div class="line"></div></div>
-    <div id="kiExtraGrid" class="ki-grid"></div>
-  </div>
-</section>
-
-<!-- ================= 05 近战打击技 ================= -->
-<section id="strikes" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">05</div>
-      <div class="sec-title"><h2>近战打击技</h2><span class="en">Strike Arts</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">吃 <b>STR 与 SPD</b> 加成的近身爆发技能：与气功互补的近战选择，适合力量流派构筑。</p>
-    <div id="strikeGrid" class="ki-grid"></div>
-  </div>
-</section>
-
-<!-- ================= 06 技能 · TP · 导师 ================= -->
-<section id="skills" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">06</div>
-      <div class="sec-title"><h2>技能 · TP · 导师</h2><span class="en">Skills, TP &amp; Masters</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">被动与主动技能全览，附每级 <b>TP 价格阶梯</b>；文末给出 TP 获取途径与全部导师的销售清单。</p>
-    <div id="skillGrid" class="skill-grid"></div>
-    <div class="ki-group-title"><h4>特殊技能</h4><div class="line"></div></div>
-    <div id="skillSpecialGrid" class="skill-grid"></div>
-    <div class="ki-group-title"><h4>TP 获取途径</h4><div class="line"></div></div>
-    <div id="tpGrid" class="tp-list"></div>
-    <div class="ki-group-title"><h4>导师名录</h4><div class="line"></div></div>
-    <div class="ftable-scroll reveal"><table class="ft" style="min-width:640px"><thead><tr><th>导师</th><th>出售内容</th></tr></thead><tbody id="masterTable"></tbody></table></div>
-  </div>
-</section>
-
-<!-- ================= 07 职业 ================= -->
-<section id="classes" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">07</div>
-      <div class="sec-title"><h2>职业</h2><span class="en">Classes</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">职业决定<b>初始属性加成</b>、<b>每级成长系数</b>与<b>职业被动</b>。与种族系数逐项相加，构成角色的最终成长曲线。</p>
-    <div id="classGrid" class="class-grid"></div>
-  </div>
-</section>
-
-<!-- ================= 08 进阶系统 ================= -->
-<section id="advanced" class="chapter">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-index">08</div>
-      <div class="sec-title"><h2>进阶系统</h2><span class="en">Advanced Systems</span></div>
-      <div class="sec-scan"></div>
-    </div>
-    <p class="sec-lead reveal">中后期深度玩法：突破极限、继承特性、挑战更高维度的力量。</p>
-    <div id="advGrid" class="adv-grid"></div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer id="about" class="chapter">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="reveal">
-        <h6>关于本 Wiki</h6>
-        <p>「祈愿龙珠」全种族玩家 Wiki —— 数据整理自服务端运行配置（2026-09 快照），基于 DragonMineZ 2.1.3 祈愿魔改版。面向玩家呈现，不含底层实现逻辑。</p>
-      </div>
-      <div class="reveal" data-delay="1">
-        <h6>阅读指引</h6>
-        <ul>
-          <li>▸ 形态表高亮数字 = 该形态组内最高倍率</li>
-          <li>▸ 消耗为负 = 该形态反过来恢复对应资源</li>
-          <li>▸ 门槛四项依次为：变身 / 叠加 / 瞬变 / 自由</li>
-          <li>▸ 标「任务解锁」的条目无法直接用 TP 购买</li>
-        </ul>
-      </div>
-      <div class="reveal" data-delay="2">
-        <h6>声明</h6>
-        <p>本站为非官方玩家资料站，仅作数据查询参考；游戏内实际数值以服务器当前版本为准。Dragon Ball 相关版权归原作所有。</p>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>QIYUAN DMZ WIKI · 2026-09 数据快照</span>
-      <span class="fbs"><svg width="14" height="14" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#ff7a18"/><polygon points="32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8" fill="#c41e14"/></svg>集齐七颗龙珠，召唤神龙</span>
-    </div>
-  </div>
-</footer>
-
-<button id="toTop" title="回到顶部">↑</button>
 
 <script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/cosmos.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>
