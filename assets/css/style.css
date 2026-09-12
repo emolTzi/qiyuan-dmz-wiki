@@ -426,23 +426,11 @@ html{scroll-behavior:smooth}
 #homeTitle .hero-sub{margin-top:10px}
 #homeTitle .hero-desc{margin-left:auto;margin-right:auto}
 
-/* 黑洞 */
-#blackhole{position:absolute;top:0;left:0;width:120px;height:120px;pointer-events:none;z-index:4;will-change:transform;filter:drop-shadow(0 0 24px rgba(255,140,40,.35))}
-.bh-lens{position:absolute;inset:-58%;border-radius:50%;background:radial-gradient(circle,rgba(255,170,60,.16),transparent 62%)}
-.bh-diskwrap{position:absolute;inset:-34%;transform:rotateX(70deg)}
-.bh-disk{position:absolute;inset:0;border-radius:50%;
-  background:conic-gradient(from 0deg,transparent 0 10%,rgba(255,110,16,.95) 22%,rgba(255,214,110,.95) 40%,rgba(255,120,20,.7) 56%,transparent 70%,rgba(140,80,255,.4) 86%,transparent 100%);
-  -webkit-mask:radial-gradient(circle,transparent 33%,#000 41%,#000 66%,transparent 75%);
-  mask:radial-gradient(circle,transparent 33%,#000 41%,#000 66%,transparent 75%);
-  filter:blur(2.5px);animation:bhSpin 4.5s linear infinite}
-.bh-ring{position:absolute;inset:15%;border-radius:50%;border:2px solid rgba(255,228,170,.9);filter:blur(.6px);
-  box-shadow:0 0 24px 7px rgba(255,180,70,.6),inset 0 0 14px rgba(255,205,130,.55)}
-.bh-core{position:absolute;inset:21%;border-radius:50%;background:radial-gradient(circle at 42% 36%,#0b0b14,#000 62%);box-shadow:0 0 44px 12px rgba(0,0,0,.92)}
-@keyframes bhSpin{to{transform:rotate(360deg)}}
-#blackhole.fed .bh-ring{animation:fedPulse .6s ease-out}
-#blackhole.fed .bh-lens{animation:fedLens .6s ease-out}
-@keyframes fedPulse{35%{box-shadow:0 0 52px 20px rgba(255,214,120,.95),inset 0 0 24px rgba(255,225,150,.85)}}
-@keyframes fedLens{35%{background:radial-gradient(circle,rgba(255,190,80,.34),transparent 62%)}}
+/* 黑洞（canvas 引力透镜渲染） */
+#blackhole{position:absolute;top:0;left:0;width:280px;height:216px;pointer-events:none;z-index:4;will-change:transform;filter:drop-shadow(0 0 26px rgba(255,150,50,.28))}
+.bh-cv{display:block;width:100%;height:100%}
+#blackhole.fed{animation:fedGlow .7s ease-out}
+@keyframes fedGlow{35%{filter:drop-shadow(0 0 54px rgba(255,205,110,.75))}}
 
 /* 龙珠（场景内漂浮） */
 .dball2{position:absolute;pointer-events:none;z-index:3;will-change:transform;filter:drop-shadow(0 0 10px rgba(255,150,40,.55))}
@@ -503,6 +491,6 @@ a.race-card{text-decoration:none;color:inherit}
   .mp-grid{grid-template-columns:1fr}
   .modal{margin:5vh 12px 0;padding:22px 18px}
   .race-pager{justify-content:center}
-  #blackhole{width:84px;height:84px}
+  #blackhole{width:190px;height:147px}
 }
 

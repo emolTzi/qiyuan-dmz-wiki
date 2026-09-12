@@ -1,5 +1,5 @@
 /* ============================================================
-   祈愿龙珠 · 首页 — 黑洞公转 / 吞噬龙珠 / 超新星重生
+   祈愿龙珠 · 首页 — 引力透镜黑洞 / 吞噬龙珠 / 超新星重生
    ============================================================ */
 'use strict';
 (function(){
@@ -7,6 +7,115 @@
   const title=$('#homeTitle');
   const bh=$('#blackhole');
   const rand=(a,b)=>a+Math.random()*(b-a);
+
+  /* ==========================================================
+     黑洞渲染器 — 吸积盘引力透镜（Gargantua 风格）
+     画布内坐标：视界半径 R，光子环 RING，盘 [DIN, DOUT]
+     ========================================================== */
+  const cv=bh.querySelector('.bh-cv');
+  const ctx=cv.getContext('2d');
+  const CW=280,CH=216,CX=CW/2,CY=CH/2+2;
+  const R=33,RING=34.6,DIN=38,DOUT=94,SINI=0.985;      // 倾角 ≈80°（近侧视）
+  const dpr=Math.min(devicePixelRatio||1,2);
+  cv.width=CW*dpr;cv.height=CH*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+
+  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+  const edgeFade=rho=>Math.max(0,Math.min(Math.min(1,(rho-DIN)/7),Math.min(1,(DOUT-rho)/22)));
+
+  /* 盘粒子：内密外疏、开普勒式差速自转 */
+  const NR=30,NT=76,pts=[];
+  for(let i=0;i<NR;i++){
+    const rho=DIN+(DOUT-DIN)*Math.pow(i/(NR-1),1.25);
+    for(let j=0;j<NT;j++){
+      pts.push({i,rho,th:rand(0,Math.PI*2),
+        w:0.00022*Math.pow(DIN/rho,1.5),
+        sz:1.3+(1-(rho-DIN)/(DOUT-DIN))*1.5+Math.random()*.5,
+        jit:rand(-1.3,1.3),yj:rand(-1.2,1.2),
+        al:(0.2+Math.random()*.3)*edgeFade(rho)});
+    }
+  }
+
+  /* 温度 × 多普勒 颜色表（靠近侧更亮更蓝，远离侧更暗更红） */
+  const TEMPS=[[255,246,220],[255,196,118],[240,128,52],[128,56,26]];
+  function tempRGB(t){const x=t*(TEMPS.length-1),i=Math.min(TEMPS.length-2,x|0),f=x-i;
+    return [0,1,2].map(k=>TEMPS[i][k]+(TEMPS[i+1][k]-TEMPS[i][k])*f);}
+  const NB=16,table=[];
+  for(let i=0;i<NR;i++){
+    const rho=DIN+(DOUT-DIN)*Math.pow(i/(NR-1),1.25);
+    const base=tempRGB((rho-DIN)/(DOUT-DIN)),row=[];
+    for(let b=0;b<NB;b++){
+      const D=0.45+(b/(NB-1))*1.1;
+      const r=Math.min(255,base[0]*D*(D<1?1+(D-1)*.15:1));
+      const g=Math.min(255,base[1]*D);
+      const bl=Math.min(255,base[2]*D*(D>1?1+(D-1)*.9:1));
+      row.push(`rgb(${r|0},${g|0},${bl|0})`);
+    }
+    table.push(row);
+  }
+
+  /* 静态渐变资源 */
+  const coreGrad=ctx.createRadialGradient(CX,CY,R*.6,CX,CY,R+7);
+  coreGrad.addColorStop(0,'#000');coreGrad.addColorStop(.78,'#000');coreGrad.addColorStop(1,'rgba(0,0,0,0)');
+  const ringGrad=ctx.createLinearGradient(CX-RING,CY,CX+RING,CY);
+  ringGrad.addColorStop(0,'rgba(255,240,205,.95)');
+  ringGrad.addColorStop(.5,'rgba(255,190,110,.55)');
+  ringGrad.addColorStop(1,'rgba(200,110,50,.35)');
+
+  let pulse=0;                                    // 吞噬脉冲（0..1）
+  const fr=new Array(NT*NR*5);                    // 前半盘绘制缓冲 [x,y,sz,col,al]×n
+  function drawP(x,y,sz,col,al){ctx.globalAlpha=al;ctx.fillStyle=col;ctx.fillRect(x-sz/2,y-sz/2,sz,sz);}
+
+  function drawBH(dt){
+    ctx.clearRect(0,0,CW,CH);
+    ctx.globalCompositeOperation='lighter';
+    let fn=0;
+    for(const p of pts){
+      p.th+=p.w*dt;
+      const c=Math.cos(p.th),s=Math.sin(p.th);
+      const rho=p.rho+p.jit;
+      const X=rho*c,Z=rho*s;
+      const beta=0.55*(1.15-(p.rho-DIN)/(DOUT-DIN));
+      const D=1+beta*(-c);                        // 左侧为靠近观测者的一侧
+      const col=table[p.i][clamp(((D-0.45)/1.1*(NB-1))|0,0,NB-1)];
+      const sx=CX+X;
+      if(Z<0){
+        /* 远侧盘：光线被引力弯折，绕到视界上下形成双弧 */
+        const h=-Z*SINI;
+        const off=Math.sqrt(Math.max(0,RING*RING-X*X))+h*0.42+p.yj;
+        drawP(sx,CY-off,p.sz*.95,col,p.al*.85);   // 上弧（主像）
+        drawP(sx,CY+off,p.sz*.9,col,p.al*.5);     // 下弧（次像，更暗）
+      }else{
+        fr[fn++]=sx;fr[fn++]=CY+Z*SINI+p.yj*.5;fr[fn++]=p.sz;fr[fn++]=col;fr[fn++]=p.al;
+      }
+    }
+
+    /* 事件视界（纯黑阴影 + 软边） */
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+    ctx.fillStyle=coreGrad;
+    ctx.beginPath();ctx.arc(CX,CY,R+7,0,7);ctx.fill();
+
+    /* 光子环（贴近视界的细亮环，随吞噬脉冲增亮） */
+    ctx.globalCompositeOperation='lighter';
+    ctx.save();
+    ctx.shadowColor='rgba(255,205,120,.85)';ctx.shadowBlur=9+10*pulse;
+    ctx.strokeStyle=ringGrad;ctx.lineWidth=1.7+1.6*pulse;
+    ctx.beginPath();ctx.arc(CX,CY,RING,0,7);ctx.stroke();
+    ctx.restore();
+
+    /* 吞噬冲击波扩散环 */
+    if(pulse>0.02){
+      ctx.strokeStyle=`rgba(255,220,150,${pulse*.5})`;ctx.lineWidth=1.2;
+      ctx.beginPath();ctx.arc(CX,CY,RING+(1-pulse)*46,0,7);ctx.stroke();
+      pulse*=0.94;
+    }
+
+    /* 前半盘：自视界前方掠过 */
+    for(let k=0;k<fn;k+=5){
+      ctx.globalAlpha=fr[k+4];ctx.fillStyle=fr[k+3];
+      ctx.fillRect(fr[k]-fr[k+2]/2,fr[k+1]-fr[k+2]/2,fr[k+2],fr[k+2]);
+    }
+    ctx.globalAlpha=1;
+  }
 
   /* ---------- 龙珠 ---------- */
   const balls=[];
@@ -42,9 +151,17 @@
     },380);
   }
 
+  /* ---------- 对外广播黑洞屏幕坐标（供星野引力透镜使用） ---------- */
+  function broadcastBH(){
+    const br=bh.getBoundingClientRect();
+    window.__BH=(br.bottom<-60||br.top>innerHeight+60)?null:
+      {x:br.left+br.width/2,y:br.top+br.height/2,r:R*(br.width/CW)};
+  }
+
   /* ---------- 主循环 ---------- */
-  let bhX=innerWidth/2,bhY=200;
+  let bhX=innerWidth/2,bhY=200,lastT=0;
   function frame(now){
+    const dt=Math.min(50,now-lastT||16);lastT=now;
     const r=scene.getBoundingClientRect(),tr=title.getBoundingClientRect();
     const cx=tr.left-r.left+tr.width/2, cy=tr.top-r.top+tr.height/2;
     const rx=Math.min(innerWidth*.34,460), ry=rx*.4;
@@ -52,22 +169,26 @@
     bhX=cx+Math.cos(t)*rx; bhY=cy+Math.sin(t)*ry;
     const behind=Math.sin(t)<0;                       // 上半圈 = 转到标题背后
     const depth=.82+.36*(Math.sin(t)+1)/2;            // 近大远小
-    bh.style.transform=`translate(${bhX-60}px,${bhY-60}px) scale(${depth})`;
+    const bw=bh.offsetWidth,bh2=bh.offsetHeight,kScale=bw/CW*depth;
+    bh.style.transform=`translate(${bhX-bw/2}px,${bhY-bh2/2}px) scale(${depth})`;
     bh.style.zIndex=behind?2:4;
     bh.style.opacity=behind?.78:1;
+    broadcastBH();
+    drawBH(dt);
 
     for(const b of balls){
       if(b.state==='free'){
         b.x+=b.vx;b.y+=b.vy;
         if(b.x<b.size/2||b.x>r.width-b.size/2)b.vx*=-1;
         if(b.y<b.size/2||b.y>r.height-b.size/2)b.vy*=-1;
-        if(Math.hypot(b.x-bhX,b.y-bhY)<64){           // 被黑洞捕获
+        if(Math.hypot(b.x-bhX,b.y-bhY)<62*kScale){    // 被黑洞捕获
           b.state='devour';b.t0=now;b.sx=b.x;b.sy=b.y;
+          pulse=1;
           bh.classList.remove('fed');void bh.offsetWidth;bh.classList.add('fed');
         }
       }else if(b.state==='devour'){                   // 螺旋吸入
         const p=Math.min(1,(now-b.t0)/480),e=p*p;
-        const ang=p*Math.PI*2.2,rad=(1-e)*26;
+        const ang=p*Math.PI*2.2,rad=(1-e)*30*kScale;
         b.x=b.sx+(bhX-b.sx)*e+Math.cos(ang)*rad;
         b.y=b.sy+(bhY-b.sy)*e+Math.sin(ang)*rad;
         b.scale=1-e*.95;b.op=1-p*.35;
@@ -82,7 +203,10 @@
     }
     requestAnimationFrame(frame);
   }
-  if(REDUCED){bh.style.transform=`translate(${innerWidth*.72}px,180px)`;}
+  if(REDUCED){
+    bh.style.transform=`translate(${innerWidth*.72}px,180px)`;
+    drawBH(0);broadcastBH();
+  }
   else requestAnimationFrame(frame);
 
   /* ---------- 数据规模计数 ---------- */

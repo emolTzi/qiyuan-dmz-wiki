@@ -68,10 +68,21 @@ const BALL_SVG=(()=>{ // 龙珠 SVG 生成器（n 星）
   resize();addEventListener('resize',resize);
   addEventListener('mousemove',e=>{mx=e.clientX/W-.5;my=e.clientY/H-.5;},{passive:true});
   (function loop(){ctx.clearRect(0,0,W,H);
+    const BH=window.__BH,RE=BH?BH.r*1.9:0;                 // 引力透镜：爱因斯坦半径
     for(const layer of layers)for(const s of layer){s.tw+=.02;s.y+=s.sp;if(s.y>H+4)s.y=-2;
       const a=.2+.6*Math.abs(Math.sin(s.tw))*(0.4+s.depth*0.75);
-      ctx.beginPath();ctx.arc(s.x-mx*28*s.depth,s.y-my*20*s.depth,s.r,0,7);
-      ctx.fillStyle=`hsla(${s.hue},90%,82%,${a})`;ctx.fill();}
+      let sx=s.x-mx*28*s.depth,sy=s.y-my*20*s.depth,m=1,gx=0,gy=0,gm=0,hasG=false;
+      if(BH){const dx=sx-BH.x,dy=sy-BH.y,d2=dx*dx+dy*dy;
+        if(d2<25*BH.r*BH.r&&d2>0.25){
+          const d=Math.sqrt(d2),sq=Math.sqrt(d*d+4*RE*RE);
+          const dp=(d+sq)/2,k=dp/d;                        // 主像：向外偏折并放大增亮
+          m=Math.min(2.2,k*k);sx=BH.x+dx*k;sy=BH.y+dy*k;
+          if(d<RE*1.15){const dm=(sq-d)/2;                 // 次像：在视界对侧成暗弱的镜像
+            gx=BH.x-dx/d*dm;gy=BH.y-dy/d*dm;gm=Math.min(.75,dm/d);hasG=true;}}}
+      ctx.beginPath();ctx.arc(sx,sy,s.r*(m>1.25?1.2:1),0,7);
+      ctx.fillStyle=`hsla(${s.hue},90%,82%,${Math.min(1,a*m)})`;ctx.fill();
+      if(hasG){ctx.beginPath();ctx.arc(gx,gy,s.r,0,7);
+        ctx.fillStyle=`hsla(${s.hue},90%,82%,${a*gm})`;ctx.fill();}}
     if(!REDUCED)requestAnimationFrame(loop);})();
 })();
 
