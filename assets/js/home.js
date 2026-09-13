@@ -23,20 +23,20 @@
   const edgeFade=rho=>Math.max(0,Math.min(Math.min(1,(rho-DIN)/7),Math.min(1,(DOUT-rho)/30)));
 
   /* 盘粒子：内密外疏、开普勒式差速自转 */
-  const NR=30,NT=76,pts=[];
+  const NR=30,NT=108,pts=[];
   for(let i=0;i<NR;i++){
     const rho=DIN+(DOUT-DIN)*Math.pow(i/(NR-1),1.25);
     for(let j=0;j<NT;j++){
       pts.push({i,rho,th:rand(0,Math.PI*2),
         w:0.00022*Math.pow(DIN/rho,1.5),
-        sz:2.1+(1-(rho-DIN)/(DOUT-DIN))*2.2+Math.random()*.8,
-        jit:rand(-1.3,1.3),yj:rand(-1.2,1.2),
-        al:(0.16+Math.random()*.26)*edgeFade(rho)});
+        sz:2.6+(1-(rho-DIN)/(DOUT-DIN))*2.8+Math.random()*1,
+        jit:rand(-1.3,1.3),yj:rand(-.9,.9),
+        al:(0.2+Math.random()*.3)*edgeFade(rho)});
     }
   }
 
-  /* 温度 × 多普勒 颜色表（靠近侧更亮更蓝，远离侧更暗更红） */
-  const TEMPS=[[255,246,220],[255,196,118],[240,128,52],[128,56,26]];
+  /* 温度 × 多普勒 颜色表（暖金色调，靠近侧更亮更白，远离侧暗红） */
+  const TEMPS=[[255,238,204],[255,182,100],[238,120,42],[116,48,20]];
   function tempRGB(t){const x=t*(TEMPS.length-1),i=Math.min(TEMPS.length-2,x|0),f=x-i;
     return [0,1,2].map(k=>TEMPS[i][k]+(TEMPS[i+1][k]-TEMPS[i][k])*f);}
   const NB=16,table=[];
@@ -106,11 +106,11 @@
       if(Z<0){
         /* 远侧盘：光线被引力弯折，绕到视界上下形成双弧 */
         const h=-Z*SINI;
-        const off=Math.sqrt(Math.max(0,RING*RING-X*X))+h*0.42+p.yj;
-        drawP(sx,CY-off,p.sz*.95,sp,p.al*.85);    // 上弧（主像）
-        drawP(sx,CY+off,p.sz*.9,sp,p.al*.5);      // 下弧（次像，更暗）
+        const off=Math.sqrt(Math.max(0,RING*RING-X*X))+h*0.32+p.yj;
+        drawP(sx,CY-off,p.sz*.95,sp,p.al*.8);     // 上弧（主像）
+        drawP(sx,CY+off,p.sz*.9,sp,p.al*.42);     // 下弧（次像，更暗）
       }else{
-        fr[fn++]=sx;fr[fn++]=CY+Z*SINI+p.yj*.5;fr[fn++]=p.sz;fr[fn++]=sp;fr[fn++]=p.al;
+        fr[fn++]=sx;fr[fn++]=CY+Z*SINI+p.yj*.5;fr[fn++]=p.sz;fr[fn++]=sp;fr[fn++]=Math.min(1,p.al*1.35);
       }
     }
 
@@ -183,39 +183,47 @@
       {x:br.left+br.width/2,y:br.top+br.height/2,r:R*(br.width/CW)};
   }
 
-  /* ---------- 标题文字引力透镜（SVG 位移贴图，黑洞掠过处文字被弯折） ---------- */
+  /* ---------- 标题文字引力透镜（整幅位移贴图，平滑无接缝） ---------- */
   const lensImg=document.getElementById('gravLensMap');
-  const LMS=260;let lensOn=false;
-  if(lensImg&&!REDUCED){
-    const C=LMS/2,S=52,RC=40;
-    const mc=document.createElement('canvas');mc.width=mc.height=LMS;
-    const mctx=mc.getContext('2d'),idat=mctx.createImageData(LMS,LMS),px=idat.data;
-    for(let y=0;y<LMS;y++)for(let x=0;x<LMS;x++){
-      const dx=x-C,dy=y-C,d=Math.sqrt(dx*dx+dy*dy);
-      let m=0;
-      if(d>1){m=Math.min(26,RC*RC/d);                 // 光线偏折 ∝ 1/d
-        if(d>112)m*=Math.max(0,1-(d-112)/34);          // 贴图边缘衰减到 0
-      }
-      const o=(y*LMS+x)*4;
-      px[o]  =clamp(128-(dx/d||0)*m/S*255,0,255);
-      px[o+1]=clamp(128-(dy/d||0)*m/S*255,0,255);
+  let lensOn=false,lensMapW=0,lensMapH=0;
+  function buildLensMap(){
+    if(!lensImg)return;
+    const tvp=title.getBoundingClientRect();
+    /* 贴图需覆盖标题 + 黑洞公转行程 + 场半径，场区外填充中性值(128)保证零位移 */
+    lensMapW=Math.ceil(tvp.width+1400);lensMapH=Math.ceil(tvp.height+920);
+    const K=0.5,MW=Math.ceil(lensMapW*K),MH=Math.ceil(lensMapH*K);   // 半分辨率生成，浏览器平滑放大
+    const mc=document.createElement('canvas');mc.width=MW;mc.height=MH;
+    const mctx=mc.getContext('2d'),idat=mctx.createImageData(MW,MH),px=idat.data;
+    const CXm=MW/2,CYm=MH/2,S=52,R0=23,PK=36;                       // R0: 峰值半径(半res)，PK: 偏折系数
+    for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){
+      const dx=x-CXm,dy=y-CYm,d2=dx*dx+dy*dy;
+      const o=(y*MW+x)*4;
+      if(d2<1){px[o]=px[o+1]=128;px[o+2]=128;px[o+3]=255;continue;}
+      const d=Math.sqrt(d2);
+      const m=PK*d*R0/(d2+R0*R0);                // 平滑偏折场：中心与远处均为 0，峰值在 R0 附近
+      px[o]  =clamp(128-(dx/d)*m/S*255,0,255);
+      px[o+1]=clamp(128-(dy/d)*m/S*255,0,255);
       px[o+2]=128;px[o+3]=255;
     }
     mctx.putImageData(idat,0,0);
     const url=mc.toDataURL('image/png');
     lensImg.setAttribute('href',url);
     try{lensImg.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href',url);}catch(e){}
+    lensImg.setAttribute('width',lensMapW);lensImg.setAttribute('height',lensMapH);
+  }
+  if(lensImg&&!REDUCED){
+    buildLensMap();
+    let rsT=null;addEventListener('resize',()=>{clearTimeout(rsT);rsT=setTimeout(buildLensMap,500);});
   }
   function updateLens(){
-    if(!lensImg||REDUCED)return;
+    if(!lensImg||REDUCED||!lensMapW)return;
     const br=bh.getBoundingClientRect(),tvp=title.getBoundingClientRect();
-    const mds=LMS*(br.width/CW);
-    const lx=br.left+br.width/2-tvp.left-mds/2, ly=br.top+br.height/2-tvp.top-mds/2;
-    const overlap=lx>-mds&&ly>-mds&&lx<tvp.width&&ly<tvp.height;
+    const bcx=br.left+br.width/2-tvp.left, bcy=br.top+br.height/2-tvp.top;
+    const overlap=bcx>-180&&bcy>-180&&bcx<tvp.width+180&&bcy<tvp.height+180;
     if(overlap){
       if(!lensOn){title.style.filter='url(#gravLens)';lensOn=true;}
-      lensImg.setAttribute('x',lx);lensImg.setAttribute('y',ly);
-      lensImg.setAttribute('width',mds);lensImg.setAttribute('height',mds);
+      lensImg.setAttribute('x',bcx-lensMapW/2);
+      lensImg.setAttribute('y',bcy-lensMapH/2);
     }else if(lensOn){title.style.filter='none';lensOn=false;}
   }
 
