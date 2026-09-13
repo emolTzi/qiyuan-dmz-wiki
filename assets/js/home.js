@@ -29,9 +29,9 @@
     for(let j=0;j<NT;j++){
       pts.push({i,rho,th:rand(0,Math.PI*2),
         w:0.00022*Math.pow(DIN/rho,1.5),
-        sz:1.3+(1-(rho-DIN)/(DOUT-DIN))*1.5+Math.random()*.5,
+        sz:2.1+(1-(rho-DIN)/(DOUT-DIN))*2.2+Math.random()*.8,
         jit:rand(-1.3,1.3),yj:rand(-1.2,1.2),
-        al:(0.2+Math.random()*.3)*edgeFade(rho)});
+        al:(0.16+Math.random()*.26)*edgeFade(rho)});
     }
   }
 
@@ -48,9 +48,27 @@
       const r=Math.min(255,base[0]*D*(D<1?1+(D-1)*.15:1));
       const g=Math.min(255,base[1]*D);
       const bl=Math.min(255,base[2]*D*(D>1?1+(D-1)*.9:1));
-      row.push(`rgb(${r|0},${g|0},${bl|0})`);
+      row.push([r|0,g|0,bl|0]);
     }
     table.push(row);
+  }
+
+  /* 圆形柔光粒子精灵图（懒生成缓存）——盘面由此呈现连续气体质感 */
+  const sprites=new Map();
+  function getSprite(i,b){
+    const key=i*NB+b;let sp=sprites.get(key);
+    if(sp)return sp;
+    const[r,g,bl]=table[i][b];
+    sp=document.createElement('canvas');sp.width=sp.height=32;
+    const g2=sp.getContext('2d');
+    const rg=g2.createRadialGradient(16,16,0,16,16,16);
+    rg.addColorStop(0,`rgba(${r},${g},${bl},1)`);
+    rg.addColorStop(.32,`rgba(${r},${g},${bl},.55)`);
+    rg.addColorStop(.7,`rgba(${r},${g},${bl},.12)`);
+    rg.addColorStop(1,`rgba(${r},${g},${bl},0)`);
+    g2.fillStyle=rg;g2.fillRect(0,0,32,32);
+    sprites.set(key,sp);
+    return sp;
   }
 
   /* 静态渐变资源 */
@@ -65,8 +83,8 @@
   haloGrad.addColorStop(0,'rgba(2,4,10,.42)');haloGrad.addColorStop(.45,'rgba(2,4,10,.2)');haloGrad.addColorStop(1,'rgba(2,4,10,0)');
 
   let pulse=0;                                    // 吞噬脉冲（0..1）
-  const fr=new Array(NT*NR*5);                    // 前半盘绘制缓冲 [x,y,sz,col,al]×n
-  function drawP(x,y,sz,col,al){ctx.globalAlpha=al;ctx.fillStyle=col;ctx.fillRect(x-sz/2,y-sz/2,sz,sz);}
+  const fr=new Array(NT*NR*5);                    // 前半盘绘制缓冲 [x,y,sz,sprite,al]×n
+  function drawP(x,y,sz,sp,al){ctx.globalAlpha=al;ctx.drawImage(sp,x-sz/2,y-sz/2,sz,sz);}
 
   function drawBH(dt){
     ctx.clearRect(0,0,CW,CH);
@@ -83,16 +101,16 @@
       const X=rho*c,Z=rho*s;
       const beta=0.55*(1.15-(p.rho-DIN)/(DOUT-DIN));
       const D=1+beta*(-c);                        // 左侧为靠近观测者的一侧
-      const col=table[p.i][clamp(((D-0.45)/1.1*(NB-1))|0,0,NB-1)];
+      const sp=getSprite(p.i,clamp(((D-0.45)/1.1*(NB-1))|0,0,NB-1));
       const sx=CX+X;
       if(Z<0){
         /* 远侧盘：光线被引力弯折，绕到视界上下形成双弧 */
         const h=-Z*SINI;
         const off=Math.sqrt(Math.max(0,RING*RING-X*X))+h*0.42+p.yj;
-        drawP(sx,CY-off,p.sz*.95,col,p.al*.85);   // 上弧（主像）
-        drawP(sx,CY+off,p.sz*.9,col,p.al*.5);     // 下弧（次像，更暗）
+        drawP(sx,CY-off,p.sz*.95,sp,p.al*.85);    // 上弧（主像）
+        drawP(sx,CY+off,p.sz*.9,sp,p.al*.5);      // 下弧（次像，更暗）
       }else{
-        fr[fn++]=sx;fr[fn++]=CY+Z*SINI+p.yj*.5;fr[fn++]=p.sz;fr[fn++]=col;fr[fn++]=p.al;
+        fr[fn++]=sx;fr[fn++]=CY+Z*SINI+p.yj*.5;fr[fn++]=p.sz;fr[fn++]=sp;fr[fn++]=p.al;
       }
     }
 
@@ -118,8 +136,8 @@
 
     /* 前半盘：自视界前方掠过 */
     for(let k=0;k<fn;k+=5){
-      ctx.globalAlpha=fr[k+4];ctx.fillStyle=fr[k+3];
-      ctx.fillRect(fr[k]-fr[k+2]/2,fr[k+1]-fr[k+2]/2,fr[k+2],fr[k+2]);
+      ctx.globalAlpha=fr[k+4];
+      ctx.drawImage(fr[k+3],fr[k]-fr[k+2]/2,fr[k+1]-fr[k+2]/2,fr[k+2],fr[k+2]);
     }
     ctx.globalAlpha=1;
   }
