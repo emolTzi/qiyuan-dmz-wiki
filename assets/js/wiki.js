@@ -163,6 +163,23 @@ function formGroupHTML(g){
         <a class="btn btn-ghost" href="race.html?r=${next.id}">${next.name} ⟶</a>
       </div>
     </div>`;
+  /* 常驻翻阅：视口左右固定箭头 + 方向键 */
+  $$('.race-nav').forEach(n=>n.remove());
+  const mkNav=(r2,dir)=>{
+    const a=document.createElement('a');
+    a.className=`race-nav ${dir}`;a.href=`race.html?r=${r2.id}`;a.title=r2.name;
+    a.setAttribute('aria-label',(dir==='prev'?'上一种族：':'下一种族：')+r2.name);
+    a.innerHTML=dir==='prev'
+      ?`<span class="rn-arrow">⟵</span><span class="rn-name">${r2.name}</span>`
+      :`<span class="rn-name">${r2.name}</span><span class="rn-arrow">⟶</span>`;
+    document.body.appendChild(a);
+  };
+  mkNav(prev,'prev');mkNav(next,'next');
+  addEventListener('keydown',e=>{
+    if(e.target.matches('input,textarea')||$('#modal.open'))return;
+    if(e.key==='ArrowLeft')location.href=`race.html?r=${prev.id}`;
+    else if(e.key==='ArrowRight')location.href=`race.html?r=${next.id}`;
+  });
   observeReveals(host);
 })();
 

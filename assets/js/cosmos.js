@@ -34,7 +34,7 @@ const BALL_SVG=(()=>{ // 龙珠 SVG 生成器（n 星）
   const tt=document.createElement('button');tt.id='toTop';tt.title='回到顶部';tt.textContent='↑';document.body.appendChild(tt);
   tt.onclick=()=>scrollTo({top:0,behavior:'smooth'});
   addEventListener('scroll',()=>{const h=document.documentElement;
-    pb.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+'%';
+    pb.style.transform=`scaleX(${h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)})`;
     tt.classList.toggle('show',h.scrollTop>700);},{passive:true});
 })();
 
