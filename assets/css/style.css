@@ -508,11 +508,12 @@ a.race-card{text-decoration:none;color:inherit}
 /* 种族常驻翻阅（视口左右固定） */
 .race-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:60;
   display:flex;align-items:center;gap:9px;padding:11px 16px;border-radius:99px;
-  border:1px solid var(--line2);background:rgba(8,12,26,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  color:var(--dim);text-decoration:none;font-size:13px;letter-spacing:1px;
+  border:1px solid rgba(255,194,51,.5);background:rgba(8,12,26,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 0 22px -4px rgba(255,150,40,.55);
+  color:var(--text);text-decoration:none;font-size:13px;letter-spacing:1px;
   transition:color .2s,border-color .2s,background .2s,transform .2s var(--eo)}
 .race-nav.prev{left:14px}.race-nav.next{right:14px}
-.race-nav .rn-arrow{font-size:16px;color:var(--gold)}
+.race-nav .rn-arrow{font-size:17px;color:var(--gold);text-shadow:0 0 10px rgba(255,194,51,.8)}
 @media (hover:hover) and (pointer:fine){
   .race-nav:hover{color:var(--text);border-color:var(--orange);background:rgba(20,26,44,.92)}
   .race-nav.prev:hover{transform:translateY(-50%) translateX(-3px)}
