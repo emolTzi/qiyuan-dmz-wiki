@@ -10,7 +10,7 @@ const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------------- 站点地图 ---------------- */
 const NAV=[
-  ['index.html','首页'],['races.html','种族'],
+  ['index.html','首页'],['races.html','种族'],['forms-guide.html','形态'],
   ['ki.html','气功'],['strikes.html','近战'],['skills.html','技能'],
   ['classes.html','职业'],['advanced.html','进阶'],['guide.html','属性'],
 ];

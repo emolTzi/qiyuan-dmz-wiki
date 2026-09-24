@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>形态星轨 · 变身形态指南 — 祈愿龙珠 IDW</title>
+<meta name="description" content="变身操作教学、六大种族形态解锁链、叠加形态（界王拳/自在极意等）与熟练度进阶路线。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="index.html">← 返回星港</a>
+    <h1>形态星轨</h1><div class="en">Transformation Guide</div>
+    <p class="lead">变身是祈愿宇宙的核心成长线。本页讲解<b>变身操作</b>、六大种族的<b>形态解锁链</b>（含每一阶的熟练度门槛）与<b>叠加形态</b>的搭配规则。各形态的倍率/消耗数值请前往对应<b style="color:#ffd9a8">种族详情页</b>查阅。</p>
+    <p class="lead" style="font-size:13px;color:var(--dim2)">※ 形态、技能价格与导师列表可能随服务器更新调整；若游戏内显示与本页不同，以当前游戏内配置为准。</p>
+  </header>
+
+  <!-- ================= 如何变身 ================= -->
+  <div class="ki-group-title reveal"><h4>如何变身</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><div style="font-family:var(--font-en);font-size:26px;color:var(--gold);letter-spacing:2px">01</div>
+      <h3 style="margin:6px 0 8px;font-size:16px">解锁形态技能</h3>
+      <p style="font-size:13.5px;color:var(--dim);line-height:1.8">按 <b>V</b> 打开角色菜单，在「技能 / 形态」页面学习对应的形态技能，并选择要使用的<b>形态组</b>与形态。形态技能按等级逐步解锁。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><div style="font-family:var(--font-en);font-size:26px;color:var(--gold);letter-spacing:2px">02</div>
+      <h3 style="margin:6px 0 8px;font-size:16px">选对模式</h3>
+      <p style="font-size:13.5px;color:var(--dim);line-height:1.8">普通形态选 <b>FORM</b> 模式；界王拳、自在极意等<b>叠加形态</b>选 <b>STACK</b> 模式，叠加在主形态之上生效。</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><div style="font-family:var(--font-en);font-size:26px;color:var(--gold);letter-spacing:2px">03</div>
+      <h3 style="margin:6px 0 8px;font-size:16px">蓄气变身</h3>
+      <p style="font-size:13.5px;color:var(--dim);line-height:1.8">按住 <b>G</b> 蓄气，蓄满松开即变身；<b>快速连按两次 G</b> 瞬间变身（瞬变消耗能量，且可能要求免蓄气熟练度）。键位可在控制设置中修改。</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><div style="font-family:var(--font-en);font-size:26px;color:var(--gold);letter-spacing:2px">04</div>
+      <h3 style="margin:6px 0 8px;font-size:16px">逐阶退形态</h3>
+      <p style="font-size:13.5px;color:var(--dim);line-height:1.8">按 <b>Alt+G</b> 退阶，重复操作可逐阶退回基础形态。</p></div>
+  </div>
+  <div class="panel reveal" style="padding:16px 20px;margin-top:14px;font-size:13.5px;color:var(--dim);line-height:1.8">
+    <b style="color:var(--gold)">熟练度门槛：</b>同一形态组内，后续形态除技能等级外还要求<b>前一形态的熟练度</b>——默认组多为 <b>25%</b>，附加形态按下表所列数值（如超蓝需超赛神 25.2%、超蓝进化需超蓝 30%）。熟练度通过在形态中战斗累积（见文末）。
+  </div>
+
+  <!-- ================= 赛亚人 ================= -->
+  <div class="ki-group-title reveal"><h4>赛亚人 · 半赛亚人</h4><div class="line"></div>
+    <a class="btn btn-ghost" style="padding:8px 18px;font-size:12.5px" href="race.html?r=saiyan">完整数据 ⟶</a></div>
+  <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">半赛亚人使用下列赛亚人形态组；两个种族的尾巴配置均为「有尾巴」。</p>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁条件</th></tr></thead><tbody>
+    <tr><td>超赛阶段</td><td>超级赛亚人 → Grade 2 → Grade 3</td><td>学习「超级形态」技能，形态等级依次为 1、2、3；后两阶各需前一形态 <b>25%</b> 熟练度。</td></tr>
+    <tr><td>超赛主链</td><td>SSJ1 Mastered → SSJ2 → SSJ3 → SSJ4 Daima</td><td>「超级形态」等级依次为 4、5、6、8；后续各需前一形态 <b>25%</b> 熟练度。半赛亚人云端另有 SSJ5 Daima，需技能 9 级 + SSJ4 Daima 25% 熟练度。</td></tr>
+    <tr><td>巨猿之力</td><td>大猿 → 黄金大猿 → SSJ4 GT</td><td>需要<b>尾巴</b>。大猿技能等级 0；黄金大猿需「超级形态」7 级 + 大猿 25%；SSJ4 GT 需 8 级 + 黄金大猿 25%。半赛亚人云端继续有 SSJ5（9 级 + SSJ4 25%）。<b>大猿需在夜间仰望满月或看到假月亮才会自动蓄变身。</b></td></tr>
+    <tr><td>传说形态</td><td>Ikari → SSJ Hybrid → SSJ Full Power</td><td>学习「传说形态」技能，等级 1、2、3；后两阶各需前一形态 <b>25%</b> 熟练度。</td></tr>
+    <tr><td>神之形态 · 蓝</td><td>超级赛亚人之神 → 超蓝 → 超蓝进化</td><td>学习「神之形态」，依次需 1、2、3 级；超蓝需超赛神 <b>25.2%</b>，超蓝进化需超蓝 <b>30%</b> 熟练度。</td></tr>
+    <tr><td>神之形态 · 玫瑰</td><td>超赛神 → 玫瑰 → 玫瑰进化 → 玫瑰3 → 玫瑰全功率</td><td>玫瑰需技能 4 级 + 超赛神 <b>25.2%</b>；玫瑰进化需玫瑰 <b>30%</b>；玫瑰3 需玫瑰进化 <b>35%</b>；全功率需玫瑰3 <b>42%</b>。</td></tr>
+    <tr><td>超蓝完美</td><td>超蓝进化 → 超蓝完美</td><td>「神之形态」4 级 + 超蓝进化 <b>35%</b> 熟练度。</td></tr>
+    <tr><td>野兽形态</td><td>Beast</td><td>从<b>悟饭</b>导师学习，仅需 1 级；服务器配置为师傅解锁，技能价格 650,000 TP。</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    <b style="color:var(--red)">注意：</b>赛亚人 / 半赛亚人的「传说形态」价格数组中有 <b>-1</b> 阶段，表示该阶段不能按普通 TP 价格购买，请查看技能菜单或询问管理员确认获得途径。「神之形态」技能在目录中有价格，但导师授予入口未确认；若技能菜单里没有，请联系管理员。
+  </div>
+
+  <!-- ================= 地球人 ================= -->
+  <div class="ki-group-title reveal"><h4>地球人</h4><div class="line"></div>
+    <a class="btn btn-ghost" style="padding:8px 18px;font-size:12.5px" href="race.html?r=human">完整数据 ⟶</a></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁条件</th></tr></thead><tbody>
+    <tr><td>超级形态</td><td>Buffed → Full Power → Overdrive → Solaris</td><td>学习「超级形态」至等级 1、2、3、4；每一后续形态需前一形态 <b>25%</b> 熟练度。</td></tr>
+    <tr><td>传说形态</td><td>四身拳 → 真·四身拳 → 超·四身拳</td><td>学习「传说形态」至等级 1、2、3；后续各需前一形态 <b>25%</b> 熟练度。技能阶段为师傅解锁。</td></tr>
+    <tr><td>人造人改造</td><td>Android Base → Super Android → Fused Android</td><td>先与<b>盖罗博士</b>互动升级为人造人；之后形态等级 0、1、2，后两阶各需前一形态 <b>25%</b> 熟练度。</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    <b style="color:var(--red)">注意：</b>盖罗博士升级是<b>人造人专属</b>路线；升级后地球人的常规形态组会受到限制，选择前请三思。
+  </div>
+
+  <!-- ================= 那美克星人 ================= -->
+  <div class="ki-group-title reveal"><h4>那美克星人</h4><div class="line"></div>
+    <a class="btn btn-ghost" style="padding:8px 18px;font-size:12.5px" href="race.html?r=namekian">完整数据 ⟶</a></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁条件</th></tr></thead><tbody>
+    <tr><td>超级形态</td><td>巨大化 → Full Power → Super Namekian</td><td>学习「超级形态」至等级 1、2、3；后续各需前一形态 <b>25%</b> 熟练度。</td></tr>
+    <tr><td>传说形态</td><td>邪恶那美克 → 邪恶巨大那美克 → 强化那美克</td><td>学习「传说形态」至等级 1、2、3；后续各需前一形态 <b>25%</b> 熟练度。技能阶段为师傅解锁。</td></tr>
+    <tr><td>神圣形态</td><td>Potential Unleashed → Golden → Awakened Golden Giant → Super Namekian God</td><td>先拥有 Super Namekian <b>30%</b> 熟练度，再学习「神之形态」；后续所需前形态熟练度依次为 <b>34.8% / 44.4% / 52%</b>。</td></tr>
+    <tr><td>原始那美克</td><td>Primal Namekian</td><td>云端形态文件存在，配置要求「超级形态」4 级；其技能是否已注册为玩家可学技能未确认——若技能菜单没有该组，请联系管理员。</td></tr>
+    </tbody></table></div>
+
+  <!-- ================= 冰冻恶魔 ================= -->
+  <div class="ki-group-title reveal"><h4>冰冻恶魔</h4><div class="line"></div>
+    <a class="btn btn-ghost" style="padding:8px 18px;font-size:12.5px" href="race.html?r=frostdemon">完整数据 ⟶</a></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁条件</th></tr></thead><tbody>
+    <tr><td>进化形态</td><td>第二形态 → 第三形态 → Final → Full Power → Fifth Form</td><td>学习「超级形态」至等级 1–5；后续每阶需前一形态 <b>25%</b> 熟练度。</td></tr>
+    <tr><td>传说形态</td><td>Mecha → Metal → Metal Core</td><td>学习「传说形态」至等级 1–3；后续各需前一形态 <b>25%</b> 熟练度。技能阶段为师傅解锁。</td></tr>
+    <tr><td>冰霜神形态</td><td>Golden → Black</td><td>从<b>弗利萨</b>导师学习；Black 需 Golden <b>49.2%</b> 熟练度。该组为 <b>STACK 叠加形态</b>。</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    <b style="color:var(--red)">注意：</b>云端包内有 Golden Frost God / Black Frost God 的形态定义，但当前服务器有效配置只包含 Golden、Black 两个形态，God 形态暂未开放。
+  </div>
+
+  <!-- ================= 魔人 ================= -->
+  <div class="ki-group-title reveal"><h4>魔人</h4><div class="line"></div>
+    <a class="btn btn-ghost" style="padding:8px 18px;font-size:12.5px" href="race.html?r=majin">完整数据 ⟶</a></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁条件</th></tr></thead><tbody>
+    <tr><td>纯粹形态</td><td>Kid → Evil → Super → Ultra</td><td>学习「超级形态」至等级 1–4；后续各需前一形态 <b>25%</b> 熟练度。</td></tr>
+    <tr><td>传说形态</td><td>Innocence Demon → Giant Innocence Demon → Super Demon</td><td>学习「传说形态」至等级 1–3；后续各需前一形态 <b>25%</b> 熟练度。技能阶段为师傅解锁。</td></tr>
+    <tr><td>吸收形态</td><td>吸收形态清单（128 种组合）</td><td>云端有完整吸收配置；普通玩家的获得/选择入口以游戏内吸收系统为准。</td></tr>
+    </tbody></table></div>
+
+  <!-- ================= 生化人 ================= -->
+  <div class="ki-group-title reveal"><h4>生化人造人</h4><div class="line"></div>
+    <a class="btn btn-ghost" style="padding:8px 18px;font-size:12.5px" href="race.html?r=bioandroid">完整数据 ⟶</a></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁条件</th></tr></thead><tbody>
+    <tr><td>生化进化</td><td>Semi Perfect → Perfect → Super Perfect → Ultra Perfect → Corrupted Giant</td><td>学习「超级形态」至等级 1–5；Perfect、Super Perfect、Ultra Perfect 各需前一形态 <b>25%</b>；Corrupted Giant 需 Ultra Perfect <b>46.8%</b>。</td></tr>
+    <tr><td>传说形态</td><td>Xeno → Xeno FP → Xeno Max</td><td>学习「传说形态」至等级 1–3；后续各需前一形态 <b>25%</b> 熟练度。技能阶段为师傅解锁。</td></tr>
+    <tr><td>弗利萨细胞数据</td><td>Golden Bio Android → Black Bio Android</td><td>从 <b>Cell</b> 导师学习；Black 需 Golden <b>39.6%</b> 熟练度。该组为 <b>STACK 叠加形态</b>。</td></tr>
+    <tr><td>比克细胞数据</td><td>Orange Bio Android → Orange Giant Bio Android</td><td>从 <b>Cell</b> 导师学习；Orange Giant 需 Orange <b>42%</b> 熟练度。该组为 <b>STACK 叠加形态</b>。</td></tr>
+    </tbody></table></div>
+
+  <!-- ================= 叠加形态 ================= -->
+  <div class="ki-group-title reveal"><h4>叠加形态 · 多种族可用</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13.5px;color:var(--dim);margin:0 0 12px;line-height:1.8">叠加形态在 <b>STACK</b> 模式中使用，叠加于当前主形态之上。若主形态不可叠加，或两种形态彼此不兼容，系统会拒绝组合或移除其中一种。</p>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>形态组</th><th>形态顺序</th><th>解锁方式</th></tr></thead><tbody>
+    <tr><td>界王拳</td><td>X2 → X3 → X4 → X10 → X20</td><td>通过<b>界王</b>学习界王拳技能，等级依次开放。（X100 名称在代码中保留，但不在当前有效配置中。）</td></tr>
+    <tr><td>究极</td><td>Ultimate</td><td>学习究极技能 1 级。默认配置标记为<b>不可叠加</b>。</td></tr>
+    <tr><td>自在极意</td><td>Sign → Mastered</td><td>技能来源为<b>维斯</b>；由内嵌 DragonMineZ Super 管理，最终等级与熟练度以游戏内有效配置为准。</td></tr>
+    <tr><td>自我极意</td><td>Sign → Mastered</td><td>技能来源为<b>比鲁斯</b>；由内嵌 DragonMineZ Super 管理，最终等级与熟练度以游戏内有效配置为准。</td></tr>
+    <tr><td>种族叠加组</td><td>冰霜神形态 / 弗利萨细胞 / 比克细胞</td><td>由相应导师提供技能（见上方对应种族章节），获得后在 STACK 模式选择形态。</td></tr>
+    </tbody></table></div>
+
+  <!-- ================= 熟练度 ================= -->
+  <div class="ki-group-title reveal"><h4>形态熟练度怎么提升</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    使用形态<b>战斗</b>、<b>造成或承受攻击</b>、以及<b>在形态中停留</b>，都会按服务器设置累积熟练度；增长速度可能受服务器倍率影响。达到前置熟练度后，新形态会自动出现在可选列表中。
+  </div>
+
+  <!-- ================= 排查 ================= -->
+  <div class="ki-group-title reveal"><h4>游戏内找不到形态时</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">① 检查模式与形态组</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">打开 <b>V</b> 菜单，确认选对了形态模式（FORM 或 STACK）和目标形态组。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">② 检查技能等级与熟练度</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">确认对应形态技能已学到要求等级，且前一形态熟练度达标。</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">③ 检查导师渠道</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">Beast、冰霜神形态、细胞数据等技能由导师提供；导师菜单里没有就询问管理员确认解锁入口。</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">④ 管理员核对配置</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">管理员可核对服务器 <b>config/dragonminez/</b> 下的形态文件——服务器配置会覆盖模组包内默认值。</p></div>
+  </div>
+
+</div></main>
+<script src="assets/js/data.js?v=4"></script>
+<script src="assets/js/cosmos.js?v=4"></script>
+</body>
+</html>
