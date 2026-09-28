@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>启航篇 · 安装登录与新手入门 — 祈愿龙珠 IDW</title>
+<meta name="description" content="祈愿龙珠服务器客户端安装、注册登录、首次创建角色、键位总表、新手教学六章与 O 键运营中心指南。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>启航篇</h1><div class="en">Liftoff · Getting Started</div>
+    <p class="lead">从拿到整合包到完成新手教学的第一小时。对应 Wiki 文档 <b>01 · 安装与登录</b> 与 <b>02 · 新手教学与第一小时</b>。</p>
+  </header>
+
+  <!-- 服务器信息 -->
+  <div class="ki-group-title reveal"><h4>服务器信息</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">地址</h3>
+      <p style="font-size:20px;color:var(--gold);font-family:var(--font-en);letter-spacing:1px">180.188.21.131:32903</p>
+      <p style="font-size:12.5px;color:var(--dim2)">离线模式，无需正版</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">版本</h3>
+      <p style="font-size:20px;color:var(--cyan);font-family:var(--font-en)">1.20.1 · Forge 47.4.10</p>
+      <p style="font-size:12.5px;color:var(--dim2)">整合包内含全部模组与优化</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">难度</h3>
+      <p style="font-size:20px;color:#59ffa0;font-family:var(--font-en)">简单</p>
+      <p style="font-size:12.5px;color:var(--dim2)">怪物生命×0.75 / 伤害×0.5 / 修炼×1.25</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">账号</h3>
+      <p style="font-size:20px;color:var(--gold);font-family:var(--font-en)">AuthMe</p>
+      <p style="font-size:12.5px;color:var(--dim2)"><code>/register</code> 注册 · <code>/login</code> 登录</p></div>
+  </div>
+
+  <!-- 安装 -->
+  <div class="ki-group-title reveal"><h4>安装与登录</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p><b>方式一（推荐）：</b>向管理员或 QQ 群获取「祈愿龙珠」客户端整合包，解压后用启动器指向 <code>.minecraft</code> 目录，选 Forge 1.20.1 启动即可。</p>
+    <p><b>方式二（自己组装）：</b>装 MC 1.20.1 + Forge 47.4.10，把全部模组放入 <code>mods</code> 文件夹。核心模组为 <code>dragonminez-…-client.jar</code>（管理员提供，版本必须与服务端一致）。服务端专属组件（QiyuanOps、QyPeak 等）客户端不需要安装。</p>
+    <p><b>内存建议：</b>分配 4–6 GB（<code>-Xmx4G</code> 或更多）。</p>
+    <p><b>首次登录：</b>多人游戏 → 添加服务器 → 地址填上方地址 → 进入后 <code>/register 密码 密码</code> 注册 → 之后每次 <code>/login 密码</code> → 修改密码 <code>/changepassword 旧密码 新密码</code>。</p>
+    <p style="color:var(--red)">⚠ 离线服下用户名+密码就是账号，请勿使用弱密码，不要把账号借给别人。</p>
+  </div>
+
+  <!-- 键位 -->
+  <div class="ki-group-title reveal"><h4>键位总表</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">默认键位，均可在「选项 → 控制」中修改。</p>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>按键</th><th>功能</th><th>备注</th></tr></thead><tbody>
+    <tr><td><span class="kbd">C</span></td><td>聚气修炼</td><td>最基础的 TP 增长方式，按住持续产出</td></tr>
+    <tr><td><span class="kbd">V</span></td><td>打开角色面板</td><td>属性加点、技能、形态、任务树、小游戏</td></tr>
+    <tr><td><span class="kbd">X</span></td><td>打开动作环（轮盘）</td><td>融合等特殊动作入口</td></tr>
+    <tr><td><span class="kbd">G</span></td><td>蓄力变身</td><td>蓄满松开即变身；<b>双击 G</b> = 瞬间变身（消耗能量）</td></tr>
+    <tr><td><span class="kbd">Alt</span> + <span class="kbd">G</span></td><td>逐阶退形态</td><td>每次退一阶；按住左 Alt 可直接解除</td></tr>
+    <tr><td><span class="kbd">F</span></td><td>起飞 / 降落</td><td>需先学会「飞行」技能</td></tr>
+    <tr><td><span class="kbd">Alt</span> + <span class="kbd">F</span></td><td>切换飞行模式</td><td>—</td></tr>
+    <tr><td><span class="kbd">R</span></td><td>冲刺</td><td>—</td></tr>
+    <tr><td><span class="kbd">Z</span></td><td>锁定目标</td><td>—</td></tr>
+    <tr><td><span class="kbd">右键</span></td><td>格挡</td><td>持武器时</td></tr>
+    <tr><td><span class="kbd">F4</span></td><td>气息感知</td><td>探测周围实体的气 / 战力</td></tr>
+    <tr><td><span class="kbd">H</span></td><td>瞬间移动 / 太空舱菜单</td><td>需先学会对应技能</td></tr>
+    <tr><td><span class="kbd">Alt</span> + <span class="kbd">1~4</span></td><td>施放招式槽 1–4</td><td><b>Ctrl</b> + <b>1~4</b> 为槽 5–8</td></tr>
+    <tr><td><span class="kbd">O</span></td><td>祈愿运营中心</td><td>签到、商城、回收、传送、家园、地下城全在这</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    <b style="color:var(--gold)">提示：</b>左 <span class="kbd">Alt</span> 是全局「第二功能键」——Alt+G 退形态、Alt+F 切飞行模式、Alt+1~4 放招式都靠它组合。
+  </div>
+
+  <!-- 新手教学 -->
+  <div class="ki-group-title reveal"><h4>新手教学六章</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">进入游戏后屏幕上方会出现常驻提示条，自动判定行为并打勾发奖。</p>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>章节</th><th>内容</th><th>你要做的事</th></tr></thead><tbody>
+    <tr><td>第一课</td><td>气是铠甲</td><td>按住 <span class="kbd">C</span> 聚气 3 秒 → 左键命中怪物 3 次 → 变身「通用形态」→ 主动下降解除</td></tr>
+    <tr><td>拟态三课</td><td>本族形态</td><td>在面板解锁并变身<strong>本族拟态</strong>，再主动解除</td></tr>
+    <tr><td>面板课</td><td>属性管理</td><td>按 <span class="kbd">V</span> 把 TP 加到属性上</td></tr>
+    <tr><td>拜师课</td><td>技能学习</td><td>找导师对话并学习第一个技能</td></tr>
+    <tr><td>飞行课</td><td>飞行</td><td>学会「飞行」后按 <span class="kbd">F</span> 飞起来</td></tr>
+    <tr><td>战斗课</td><td>格挡/锁定/冲刺</td><td>右键格挡、<span class="kbd">Z</span> 锁定、<span class="kbd">R</span> 冲刺各完成指定动作</td></tr>
+    <tr><td>出师</td><td>结业</td><td>完成全部课程，领取出师奖励</td></tr>
+    </tbody></table></div>
+
+  <!-- O键 -->
+  <div class="ki-group-title reveal"><h4>O 键 · 祈愿运营中心</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">按 <span class="kbd">O</span> 打开服务器中枢，这是你以后最常用的菜单。</p>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">战士档案</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">显示种族、等级、战力（BP）</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">服务器资产</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">祈子余额（本服通用货币）</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">战斗与修行</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">技能点商城（祈子换 TP）、战利品回收、复活服务</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">地下城</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">一键进入「无尽厅堂」探索区</p></div>
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">传送与领地</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">官方路径点传送、星球导航、家园（地皮）</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">商城与日常</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">胶囊商城、<b>每日签到</b>（每天领 100 祈子）</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">摸金行动</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">进入搜打撤玩法（见 <a href="mojin.html">摸金星域</a>）</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">终端设置</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">运营中心界面设置</p></div>
+  </div>
+
+  <!-- 推荐第一小时 -->
+  <div class="ki-group-title reveal"><h4>推荐的第一小时</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    <p>1. 完成新手教学前几课，攒下第一批 TP</p>
+    <p>2. 按 <span class="kbd">O</span> → <strong>领取修行签到</strong>（100 祈子）</p>
+    <p>3. 按 <span class="kbd">V</span> 打开面板，把 TP 加到属性上（加点提升等级与战力）</p>
+    <p>4. 按 <span class="kbd">O</span> → <strong>官方路径点传送</strong> → 去找武天老师（龟仙屋）或孙悟空（悟空的家）拜师学技能</p>
+    <p>5. 学会「飞行」后按 <span class="kbd">F</span> 起飞，开启看哪飞哪的龙珠世界</p>
+    <p>6. 去 <span class="kbd">O</span> → <strong>地下城</strong> 进入无尽厅堂，打怪熟悉战斗并赚祈子</p>
+    <p>7. 有余力后打开 <span class="kbd">V</span> → <strong>剧情任务树</strong>，从第一章开始推进</p>
+  </div>
+
+  <!-- 界面小知识 -->
+  <div class="ki-group-title reveal"><h4>界面小知识</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· 屏幕上的 <b>气（KI）/ 体力（STM）/ 生命（HP）</b> 条是 DMZ 战斗核心：气不够放不出技能，体力不够无法冲刺格挡。</p>
+    <p>· 吃东西回复的不只是饱食度，还会按比例回复生命/气/体力——熟牛肉等高饱食度食物性价比更高。</p>
+    <p>· 按 <span class="kbd">V</span> 面板里有「属性 / 技能 / 形态 / 任务」多个页签，转生按钮也在这里。</p>
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const NAV=[
   ['index.html','首页'],['races.html','种族'],['forms-guide.html','形态'],
   ['ki.html','气功'],['strikes.html','近战'],['skills.html','技能'],
-  ['classes.html','职业'],['advanced.html','进阶'],['guide.html','属性'],
+  ['classes.html','职业'],['advanced.html','进阶'],['guide.html','属性'],['play.html','玩法'],
 ];
 const BALL_SVG=(()=>{ // 龙珠 SVG 生成器（n 星）
   const pts=(cx,cy,r)=>{let p='';for(let i=0;i<5;i++){const a=-Math.PI/2+i*2*Math.PI/5;p+=`${(cx+r*Math.cos(a)).toFixed(1)},${(cy+r*Math.sin(a)).toFixed(1)} `;}return p;};

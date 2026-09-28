@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>剧情与龙珠 · 十二篇章与神龙许愿 — 祈愿龙珠 IDW</title>
+<meta name="description" content="12 大剧情篇章、任务系统与难度、组队加成、七龙珠收集流程、神龙与波伦伽愿望清单。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>剧情与龙珠</h1><div class="en">Saga &amp; Dragon Balls</div>
+    <p class="lead">12 大篇章、252 个剧情任务、166 个篇章敌人——推剧情是最快的 TP 来源之一。集齐七龙珠，召唤神龙许愿。</p>
+  </header>
+
+  <!-- 任务系统 -->
+  <div class="ki-group-title reveal"><h4>任务系统</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· 按 <span class="kbd">V</span> 打开角色面板 → <b>剧情（Sagas/Quests）</b> 页签即任务树，可查看目标、奖励与追踪状态。</p>
+    <p>· 任务指令：<code>/dmzquest list</code>（列表）、<code>/dmzquest info &lt;任务ID&gt;</code>（详情，ID 里的 <code>:</code> 写成 <code>.</code>，如 <code>saiyan_saga.1</code>）、<code>/dmzquest track &lt;任务ID|none&gt;</code>（追踪）。</p>
+    <p>· 剧情敌人是特殊战斗 NPC：高阶敌人会瞬移残像、变身、破防，强度随难度与队伍人数缩放（组队每人 +25% 生命 / +10% 伤害）。</p>
+    <p>· 难度在面板选择：<b>简单 / 普通 / 困难</b>——简单：敌人 ×0.75 生命、×0.5 伤害、修炼 ×1.25；困难：敌人 ×2 生命、×1.5 伤害、修炼与任务奖励 ×1.25。组队成员需选兼容难度。</p>
+    <p>· <b>组队加成</b>：任务奖励系数 1.45 起，训练点共享 50%；等级差超过 500 无法组队刷同一任务。</p>
+  </div>
+
+  <!-- 12 篇章 -->
+  <div class="ki-group-title reveal"><h4>十二大剧情篇章</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>#</th><th>篇章</th><th>内容</th></tr></thead><tbody>
+    <tr><td>1</td><td>龙珠篇</td><td>红缎带军团线：银/紫/白/蓝将军、桃白白、皮拉夫机甲</td></tr>
+    <tr><td>2</td><td>赛亚人篇</td><td>拉蒂兹、栽培人、那巴、大猿贝吉塔</td></tr>
+    <tr><td>3</td><td>弗利萨篇</td><td>那美克星、基纽特战队、四形态弗利萨（乘赛亚人飞船前往那美克星）</td></tr>
+    <tr><td>4</td><td>人造人篇</td><td>19/20 号、17/18 号，直至沙鲁</td></tr>
+    <tr><td>5</td><td>未来篇</td><td>时光机线，未来地球的人造人与沙鲁</td></tr>
+    <tr><td>6</td><td>布欧篇</td><td>巴比迪、达普拉、布欧全形态</td></tr>
+    <tr><td>7</td><td>GT 篇</td><td>贝比、超级 17 号、邪恶龙</td></tr>
+    <tr><td>8</td><td>比鲁斯篇</td><td>破坏神降临</td></tr>
+    <tr><td>9</td><td>复活的 F 篇</td><td>弗利萨复活</td></tr>
+    <tr><td>10</td><td>第六宇宙篇</td><td>宇宙竞技场六人战（完成第 1 话解锁宇宙竞技场传送）</td></tr>
+    <tr><td>11</td><td>黑悟空篇</td><td>扎马斯线</td></tr>
+    <tr><td>12</td><td>力量大会</td><td>全宇宙选手乱战、无之界</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    另有剧场版篇（布罗利、超级英雄等）与 29 个支线。篇章 Boss 战力标尺：赛亚人篇末约 <b>3,250 BP</b> → 弗利萨篇 <b>37,000</b> → 人造人 <b>150,000</b> → 未来 <b>260,000</b> → 布欧 <b>820,000</b> → 剧场版 <b>1,540,000</b>。按自己 BP 量力推进。
+  </div>
+
+  <!-- 龙珠 -->
+  <div class="ki-group-title reveal"><h4>龙珠收集与许愿</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><div style="font-family:var(--font-en);font-size:22px;color:var(--gold)">STEP 1</div>
+      <h3 style="margin:6px 0 8px;font-size:15px">合成龙珠雷达</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">T1 雷达芯片 + T1 雷达 CPU（那美克龙珠要 T2 套件）；通关任务还可拿双向雷达。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><div style="font-family:var(--font-en);font-size:22px;color:var(--gold)">STEP 2</div>
+      <h3 style="margin:6px 0 8px;font-size:15px">搜寻七珠</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">龙珠散布在对应世界约 1000 格范围内，用雷达探测距离与方位。</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><div style="font-family:var(--font-en);font-size:22px;color:var(--gold)">STEP 3</div>
+      <h3 style="margin:6px 0 8px;font-size:15px">召唤神龙</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">集齐 7 颗 → 放置召唤 → 选愿望 → 龙珠石化后重新散布。</p></div>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>神龙（地球 · 一次 1 愿）</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>愿望</th><th>内容</th></tr></thead><tbody>
+    <tr><td>训练点</td><td><b>+5,000 TP</b></td></tr>
+    <tr><td>仙豆</td><td>16 颗（全恢复神药，有使用冷却）</td></tr>
+    <tr><td>如意棒 / 神奇树果 ×16</td><td>特殊物品</td></tr>
+    <tr><td>T2 雷达 CPU ×4</td><td>升级雷达</td></tr>
+    <tr><td>赛亚人飞船</td><td>去那美克星的行具</td></tr>
+    <tr><td>材料包 / 最强护甲三件套</td><td>物资</td></tr>
+    <tr><td>重置种族被动</td><td>清空种族技能叠层重新攒</td></tr>
+    <tr><td>重捏外观 / 改难度 / 重置剧情进度</td><td>实用功能</td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>波伦伽（那美克星 · 一次 3 愿 · 奖励更大）</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>愿望</th><th>内容</th></tr></thead><tbody>
+    <tr><td>训练点</td><td><b>+15,000 TP</b></td></tr>
+    <tr><td>仙豆</td><td>32 颗</td></tr>
+    <tr><td>勇者之剑</td><td>神兵</td></tr>
+    <tr><td>属性重分配</td><td>已分配属性全返（洗点）</td></tr>
+    <tr><td>波塔拉耳环（黄/绿）</td><td>两人融合神器，见 <a href="world.html">家园与世界</a></td></tr>
+    <tr><td>重置种族被动 / 材料包 / 无敌护甲全套</td><td>同地球神龙</td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>实用提示</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    <p>· <b>去那美克星</b>：乘赛亚人飞船/太空舱（<span class="kbd">H</span> 键菜单），或走 O 键星球导航。</p>
+    <p>· 龙珠许愿是中期最快的成长跳板，攒 TP 愿望 + 属性重分配优先级最高。</p>
+    <p>· 那美克星特产 Gete 碎片矿（做稀有属性胶囊：单维 +15），挖矿别错过。</p>
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

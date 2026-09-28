@@ -531,3 +531,16 @@ a.race-card{text-decoration:none;color:inherit}
   #blackhole{width:190px;height:147px}
 }
 
+/* ---- 指南页排版：指令代码 / 键位 ---- */
+code{font-family:var(--font-en);font-size:.92em;color:#ffd9a8;background:rgba(255,150,40,.1);
+  border:1px solid rgba(255,150,40,.28);border-radius:6px;padding:1px 7px;white-space:nowrap}
+.kbd{display:inline-block;min-width:22px;text-align:center;font-family:var(--font-en);font-weight:700;font-size:12.5px;
+  color:var(--gold);background:linear-gradient(180deg,rgba(255,194,51,.16),rgba(255,140,20,.06));
+  border:1px solid rgba(255,194,51,.45);border-bottom-width:2px;border-radius:7px;padding:2px 8px;margin:0 1px}
+.qa-q{color:var(--text);font-weight:700;font-size:15px;margin:0 0 8px}
+.qa-q::before{content:"Q";display:inline-block;font-family:var(--font-en);color:var(--gold);margin-right:9px;
+  border:1px solid rgba(255,194,51,.45);border-radius:6px;padding:0 7px;font-size:12px;vertical-align:2px}
+.qa-a{color:var(--dim);font-size:13.5px;line-height:1.85;margin:0}
+.qa-a::before{content:"A";display:inline-block;font-family:var(--font-en);color:var(--cyan);margin-right:9px;
+  border:1px solid rgba(62,226,255,.4);border-radius:6px;padding:0 7px;font-size:12px;vertical-align:2px}
+

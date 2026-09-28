@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>巅峰赛 · PvP 排位天梯 — 祈愿龙珠 IDW</title>
+<meta name="description" content="巅峰赛排位 PvP：参赛条件、匹配规则、巅峰积分与段位、最高 +80% 全属性加成的巅峰系数。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>巅峰赛</h1><div class="en">Peak Arena · Ranked PvP</div>
+    <p class="lead">按战力匹配的排位 PvP：胜负结算巅峰积分与巅峰系数，系数直接转化为<b style="color:var(--gold)">全属性加成（封顶 +80%）</b>——打得好，全服都比你弱一截。</p>
+  </header>
+
+  <div class="ki-group-title reveal"><h4>参赛条件与入口</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· <b>六维属性总和 ≥ 300</b> 才能排队（面板里能看到总和）。</p>
+    <p>· 指令：<code>/peak</code> 或 <code>/qya</code>（别名 <code>/dianfeng</code>、<code>/df</code>）。</p>
+    <p>· <code>/peak queue</code> 排队 · <code>/peak leave</code> 退出 · <code>/peak top</code> 排行榜 · <code>/peak info</code> 个人信息；</p>
+    <p>· <code>/qya queue solo</code>（1v1，另有 duo / trio 组队赛制）、<code>/qya status</code>、<code>/qya rating</code> 查隐藏分；</p>
+    <p>· 排位在专属<b>镜像竞技场</b>进行（每场程序生成全新场地），比赛外主世界仍是普通 PvP 规则。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>匹配与对局</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">匹配机制</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">按战力匹配，初始容差 ±25%，每等 15 秒放宽一档，上限 ±85%；等待 120 秒后不满员也会开局。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">对局流程</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">生成场地 → 10 秒倒计时（锁定生存模式）→ 开战；单场 5 分钟，超时按剩余血量比例判定；平分进入 60 秒<b>骤死</b>。</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">阵亡与逃跑</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">阵亡后 3 秒重生并带 3 秒无敌；中途逃跑扣隐藏分 40。</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">组队赛制</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">2v2 / 3v3v3 支持资源点争夺等胜利条件，用 <code>/qya party</code> 组队。</p></div>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>巅峰积分与段位</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>规则</th><th>数值</th></tr></thead><tbody>
+    <tr><td>初始积分</td><td>1000 分</td></tr>
+    <tr><td>胜负结算</td><td>胜 <b>+24</b> 起，败 <b>−18</b> 起；连胜每场额外 +6（封顶 +18），连败有减免；分差修正 ±40% 封顶</td></tr>
+    <tr><td>新手保护</td><td>前 10 场失败扣分减半，积分下限 1000</td></tr>
+    <tr><td>不打衰减</td><td>积分超过 1600 后，连续 7 天不打开始每天 −10</td></tr>
+    <tr><td>赛季软重置</td><td>新赛季保留 50% 积分</td></tr>
+    <tr><td>段位播报</td><td>升降段全服/个人播报；段位凭证（层证、界徽）在对局中掉落，可在任务书兑换祈子（见 <a href="dungeon.html">地下城</a>）</td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>巅峰系数（打到就是赚）</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· 系数 = 1.0 + 按积分曲线计算（1000 分起算，越高越陡），<b style="color:var(--gold)">封顶 +80%</b>。</p>
+    <p>· 系数作为永久 buff 叠加到<b>全属性</b>（STR / SKP / DEF / STM / VIT / PWR / ENE），并叠加形态倍率——巅峰选手打剧情、下本都更硬。</p>
+    <p>· 段位提升/下降时有个人播报；系数 ≥1.4 的玩家进入摸金地图初始暴露值 +15（高手风险自负，见 <a href="mojin.html">摸金行动</a>）。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>建议</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    <p>· 出门带足仙豆/食物，竞技场里不能补给。</p>
+    <p>· 打排位前先在地下城/剧情里练熟格挡（<span class="kbd">右键</span>）、锁定（<span class="kbd">Z</span>）、冲刺（<span class="kbd">R</span>）三件套。</p>
+    <p>· 连败别头铁——扣分减免有限，歇一局再战。</p>
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>死亡与转世 · 地府复活与神龙转世 — 祈愿龙珠 IDW</title>
+<meta name="description" content="死亡不掉落但进地府：免费 180 秒或付费立即复活；神龙转世 NG+ 系统的门槛、保留规则与新周目加成。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>死亡与转世</h1><div class="en">Afterlife &amp; Reincarnation</div>
+    <p class="lead">死亡不掉装备，但要去地府排队复活；战力达标后可以转世进入新周目——属性重练，但形态与技能全部保留。</p>
+  </header>
+
+  <div class="ki-group-title reveal"><h4>死亡会发生什么</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· <b>不会掉落物品</b>：服务器开启了物品保留，死亡时背包/装备都在。</p>
+    <p>· 死亡后以灵魂状态进入<b>地府（阴间）</b>，等待复活。复活二选一：</p>
+    <p>　① <b>免费等待</b>：180 秒后自动复活（等待期内不可做其他事）；</p>
+    <p>　② <b>付费立即复活</b>：按 <span class="kbd">O</span> → 复活服务，支付<b>当前余额的 2%</b> 立刻爬起来——BOSS 战翻车时的救命选项。</p>
+    <p>· 复活后由<b>阎魔大王</b>送回地球。</p>
+    <p>· <b>魔人专属</b>：种族技能「自救」允许死亡时原地复活（回复 25% 生命），冷却 1 小时——常打高危内容的魔人等于多一条命。</p>
+  </div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    地府里也能逛逛——那里是独立维度，阎魔大王、阴间建筑都在；不过正常情况下复活后直接回地球。
+  </div>
+
+  <div class="ki-group-title reveal"><h4>神龙转世（NG+ 系统）</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13.5px;color:var(--dim);margin:0 0 12px;line-height:1.8">战力达标后可以<b>转世</b>进入新周目：属性大部分清空，但保留形态与技能，换来更快更猛的成长曲线。</p>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>项目</th><th>规则</th></tr></thead><tbody>
+    <tr><td>入口</td><td><code>/reincarnate</code> 查看资格 → <code>/reincarnate confirm</code> 确认转世（不可逆）</td></tr>
+    <tr><td>门槛（战力 BP）</td><td>1 转 <b>10,000</b> → 2 转 <b>50,000</b> → 3 转 <b>150,000</b> → 4 转 <b>300,000</b>，之后每转 +150,000。不需要龙珠，也不需要做任务</td></tr>
+    <tr><td>形态与技能</td><td><b style="color:#59ffa0">全部保留</b>——变强积累不会清零</td></tr>
+    <tr><td>属性保留</td><td>按转数保留可自由重分的部分：1 转 50% → 2 转 40% → 3 转 25% → 4 转 10% → 5 转起 0%（免 TP 重分）</td></tr>
+    <tr><td>TP 成本</td><td>曲线变平：转数越高，买属性的单价增长越慢，后期成长明显提速</td></tr>
+    <tr><td>正念与超负荷</td><td>转世提升「正念」上限（120 起，每转 +50）与气释放超负荷时限——高级气功玩法的资源上限</td></tr>
+    <tr><td>新周目（NG+）</td><td>每转 1 次，剧情与副本敌人强度 <b>+75%</b>，任务/掉落奖励 <b>+50%</b>——世界随你一起变难、变富</td></tr>
+    <tr><td>上限</td><td>99 转</td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>三个容易混淆的系统</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>系统</th><th>入口</th><th>效果</th></tr></thead><tbody>
+    <tr><td><b>神龙转世</b></td><td><code>/reincarnate</code></td><td>保留形态技能、清减属性重练，敌人与奖励随转数增强（本服现行系统）</td></tr>
+    <tr><td><b>换种族</b></td><td>找丹迪对话重置</td><td><b style="color:var(--red)">清空一切</b>（属性/技能/任务进度）并回到创角流程重选种族</td></tr>
+    <tr><td><b>洗点</b></td><td>丹迪「重置属性」/ 波伦伽许愿「属性重分配」</td><td>只返还已分配属性点，不动其他任何进度</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    服务器还规划了大型「祈愿转世」资料片玩法（五转五龙、圣化龙珠、召龙仪式），目前<b>尚未开放</b>，以官方公告为准。
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

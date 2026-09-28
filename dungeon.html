@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地下城 · 无尽厅堂与天梯兑换 — 祈愿龙珠 IDW</title>
+<meta name="description" content="无尽厅堂日常刷怪赚祈子、限时活动副本规则、天梯素材录与层证兑换所完整价格表。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>地下城</h1><div class="en">Dungeon &amp; Exchange</div>
+    <p class="lead">无尽厅堂是日常赚祈子的主场地：免费进入、无时间限制。活动副本与巅峰赛掉落则通向兑换所的大额祈子。</p>
+  </header>
+
+  <!-- 无尽厅堂 -->
+  <div class="ki-group-title reveal"><h4>无尽厅堂（日常地下城）</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">进入</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">按 <span class="kbd">O</span> → 地下城 →「进入地下城」，或 <code>/qyd enter</code>。会被传送到专属维度的一条出生环走廊。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">开拓</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">走廊两侧是封闭铁栏门，每扇门后是 50×50 未知区域。对准门右键（或 <code>/qyd expand</code>）花 <b>100 祈子</b>开拓。</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">收益</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">击杀副本内怪物每只 <b>+5 祈子</b>直接进账；区域内有战利品宝箱。</p></div>
+    <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">规则</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">无时间限制、无进入冷却；禁止 PvP、禁止挖掘/放置；掉出虚空自动救回。</p></div>
+  </div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    指令：<code>/qyd where</code> 查看位置 · <code>/qyd leave</code> 离开（主动离开不记冷却）· <code>/qyd list</code> 副本列表
+  </div>
+
+  <!-- 活动副本 -->
+  <div class="ki-group-title reveal"><h4>活动副本（限时实例）</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>管理员不定期开放限时实例副本（多楼层、主题布局、Boss 房）：</p>
+    <p>· 时限 <b>30 分钟</b>，超时传出；通关后进入 <b>10 分钟冷却</b>（主动离开不算）；</p>
+    <p>· 全队一起走「下行点」换层；</p>
+    <p>· 奖励箱分 <b>普通 / 精英 / BOSS</b> 三档：普通箱出 plug 系材料、蓝侦察镜等；BOSS 箱出审判核心、灵魂碎片、宇宙之心等高级材料，还有机会开出<b>宝箱钥匙</b>与<b>大魔龙珠</b>；</p>
+    <p>· 副本 Boss 由阶段技能引擎驱动：按血量阈值释放多段组合技，伤害随你的防御缩放——别站桩。</p>
+  </div>
+
+  <!-- 天梯素材录 -->
+  <div class="ki-group-title reveal"><h4>天梯素材录（一次性任务）</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">材料来自巅峰赛排位对局掉落，物品说明里标注了对应层数/段位。在 V 菜单任务书提交。</p>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>提交物</th><th>数量</th><th>到账祈子</th></tr></thead><tbody>
+    <tr><td>残破的道服碎片（天梯第 1 层）</td><td>16</td><td>400</td></tr>
+    <tr><td>探测器残骸（第 2 层）</td><td>8</td><td>800</td></tr>
+    <tr><td>龙珠雷达残件（第 2 层）</td><td>8</td><td>800</td></tr>
+    <tr><td>气功卷轴残页（第 1 层）</td><td>5</td><td>1,000</td></tr>
+    <tr><td>吸收细胞样本（第 3 层）</td><td>4</td><td>2,000</td></tr>
+    <tr><td>黑暗龙珠碎片（赛季主线）</td><td>1</td><td>10,000</td></tr>
+    </tbody></table></div>
+
+  <!-- 兑换所 -->
+  <div class="ki-group-title reveal"><h4>兑换所（层证可无限重复交）</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>提交物</th><th>到账祈子</th></tr></thead><tbody>
+    <tr><td>祈愿层证 · 一重</td><td>500</td></tr>
+    <tr><td>祈愿层证 · 二重</td><td>2,000</td></tr>
+    <tr><td>祈愿层证 · 三重</td><td>8,000</td></tr>
+    <tr><td>祈愿层证 · 四重</td><td>15,000</td></tr>
+    <tr><td>祈愿层证 · 五重</td><td><b>40,000</b></td></tr>
+    <tr><td>凡界 · 裂痕界徽（一次性）</td><td>1,000</td></tr>
+    <tr><td>魔界 · 业火界徽（一次性）</td><td>5,000</td></tr>
+    <tr><td>神界 · 圣辉界徽（一次性）</td><td>20,000</td></tr>
+    <tr><td><b>三界通行</b>（集齐三界徽后解锁）</td><td><b>50,000 + 全服公告</b></td></tr>
+    <tr><td>名人堂 · 冠军戒指 / 完全体细胞核（各一次性）</td><td>各 20,000</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    层证与界徽是巅峰赛段位的实物凭证——段位越高，掉的可兑换物越值钱。玩法详见 <a href="peak.html">巅峰赛</a>。
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

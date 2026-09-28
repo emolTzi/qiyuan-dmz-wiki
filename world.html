@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家园与世界 · 传送组队融合 — 祈愿龙珠 IDW</title>
+<meta name="description" content="地皮家园、官方路径点传送、组队系统、融合舞步与波塔拉耳环、武道会团本、全地图世界观速览。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>家园与世界</h1><div class="en">Home · Teleport · Fusion</div>
+    <p class="lead">地皮安家、路径点传送、组队刷本、融合变身——以及这个宇宙里所有能去的地方。</p>
+  </header>
+
+  <div class="ki-group-title reveal"><h4>家园（地皮）</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>每人可在<b>地皮世界</b>领取自己的 <b>42×42</b> 建造地块（最多 4 块），地皮内只有你能动方块。</p>
+    <p>· <b>领取</b>：O 键 → 传送与领地 → 家园 →「领取家园地皮」（等于 <code>/plot auto</code>）；</p>
+    <p>· <b>回家</b>：O 键家园页「回到家园」，或 <code>/plot home</code>；</p>
+    <p>· 常用：<code>/plot visit 玩家</code> 参观 · <code>/plot add 玩家</code> 授权建造 · <code>/plot trust 玩家</code> 永久共管 · <code>/plot deny 玩家</code> 拉黑 · <code>/plot remove 玩家</code> 移除授权 · <code>/plot merge</code> 合并相邻地皮 · <code>/plot info</code> 查看；</p>
+    <p>· 主世界野外<b>不可随意圈地建造</b>，长期建筑请放地皮里。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>传送</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>方式</th><th>用法</th></tr></thead><tbody>
+    <tr><td><b>官方路径点</b></td><td>O 键 → 官方路径点传送：龟仙屋、悟空的家、地球神殿、比克的家、贝吉塔训练室、武道大会会场、沙鲁擂台、特兰克斯的飞船、巴比迪的飞船、格罗博士、那美克大长老等，点「传送」直达（冷却 30 秒）</td></tr>
+    <tr><td>星球导航</td><td>O 键 → 星球导航：主城、主世界、那美克星等维度入口</td></tr>
+    <tr><td>CMI 家园</td><td><code>/home set</code> 设家、<code>/home</code> 回家、<code>/cmi homes</code> 管理多个家</td></tr>
+    <tr><td>玩家互传</td><td><code>/tpa 玩家</code>（去对方）、<code>/tpa here 玩家</code>（叫对方来）、对方 <code>/tpaccept</code></td></tr>
+    <tr><td>返回主城</td><td><code>/spawn</code> 或 O 键「返回主城」</td></tr>
+    <tr><td>死亡回程</td><td><code>/back</code>（部分场景可用）</td></tr>
+    <tr><td>星际</td><td>太空舱（<span class="kbd">H</span> 菜单）、剧情自动传送</td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>组队 /dmzparty</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
+    <tr><td><code>/dmzparty invite 玩家</code></td><td>邀请组队</td></tr>
+    <tr><td><code>/dmzparty accept</code>（或 <code>accept confirm</code>）</td><td>接受（难度不兼容需二次确认）</td></tr>
+    <tr><td><code>/dmzparty leave</code> / <code>kick</code> / <code>disband</code></td><td>离开 / 踢人 / 解散（队长离开=解散）</td></tr>
+    <tr><td><code>/dmzparty pvp</code></td><td>队伍内 PvP 开关</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    组队收益：剧情任务奖励系数 1.45+、<b>TP 共享 50%</b>、任务目标队员各自独立完成；代价是敌人生命 +25%/人、伤害 +10%/人。等级差 &gt;500 无法同队。
+  </div>
+
+  <div class="ki-group-title reveal"><h4>融合</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">融合舞步（Metamoru）</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">双方都学会 fusion 技能（悟空处学，首级 25,000 TP）、<b>同种族</b>、总属性差 ≤50%、都不在融合/冷却中。两人靠近（5 格内）在 <span class="kbd">X</span> 轮盘选中 Fusion，<b>同时长按 G</b> 完成舞步。融合体属性 = 领队 + 搭档 STR/SKP/PWR 的 1.25–2.0 倍；持续 <b>15 分钟</b>、冷却 <b>30 分钟</b>。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">波塔拉耳环</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">波伦伽许愿获得（黄/绿一对），两人各戴一只（饰品槽），靠近后自动融合，属性倍率更高（1.75–2.5），直到设定时长结束耳环碎裂。戴右耳者为领队。见 <a href="saga.html">剧情与龙珠</a>。</p></div>
+  </div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    融合到期/死亡/掉线/距离过远都会解除；<code>/dmzfusion finish</code> 可提前结束自己的融合。
+  </div>
+
+  <div class="ki-group-title reveal"><h4>武道会与团本</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· <b>武道会</b>：<code>/rg tourney</code>（别名 <code>/tournament</code>、<code>/sdt</code>）——<code>list</code> 看赛事、<code>join</code> 报名、<code>status</code> 查看进度、<code>loadout</code> 配装；赛场在官方路径点「武道大会会场」。</p>
+    <p>· <b>团本（Raid）</b>：<code>/rg raid</code>（别名 <code>/raidboss</code>、<code>/srb</code>）——多人波次挑战大型 Boss。</p>
+    <p>· 主世界的<b>沙鲁擂台</b>（官方路径点可达）等地标常驻剧情 Boss，可反复挑战。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>实用物品与杂项</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    <p>· <b>仙豆</b>：全恢复，使用有冷却；卡林定期赠送。</p>
+    <p>· <b>属性胶囊</b>：+5 单维属性；稀有 Gete 胶囊 +15（那美克 Gete 矿材料）。</p>
+    <p>· <b>气储能器</b>：随时回气。</p>
+    <p>· <b>筋斗云</b>：心地纯净（善阵营）才能乘坐的飞行道具。</p>
+    <p>· <b>时装</b>：基科诺工作台合成各类套装外观（大主厨魔人、暗黑武士等）。</p>
+    <p>· <b>抽奖箱</b>：活动期间发放钥匙，主城抽奖箱可开出稀有道具（<code>/crates</code> 查看钥匙）。</p>
+    <p>· 称号/排名：武道会与活动发放称号；<code>/playtime</code> 查在线时长、<code>/rank list</code> 看段位列表。</p>
+    <p>· 社交：<code>/pm 玩家 消息</code> 私聊、<code>/mail send</code> 离线邮件、<code>/nick</code> 昵称、<code>/afk</code> 挂机、<code>/rules</code> 查看规则。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>世界观速览（有哪些地方可去）</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>世界</th><th>怎么去</th><th>干什么</th></tr></thead><tbody>
+    <tr><td>主世界（地球）</td><td>出生地</td><td>剧情、师傅、龙珠、地皮旁的野外</td></tr>
+    <tr><td>主城（安全区）</td><td><code>/spawn</code></td><td>商店街、抽奖箱、出生点</td></tr>
+    <tr><td>那美克星</td><td>太空舱/飞船</td><td>弗利萨篇、大长老、波伦伽、Gete 矿</td></tr>
+    <tr><td>地府</td><td>死亡</td><td>阎魔大王、复活等待（见 <a href="rebirth.html">死亡与转世</a>）</td></tr>
+    <tr><td><b>精神时光屋</b></td><td>波波先生守门</td><td>重力 ×10 速成修行</td></tr>
+    <tr><td>神圣界王星 / 界王星</td><td>蛇道/飞船</td><td>北界王、界王拳</td></tr>
+    <tr><td>贝吉塔星 / 其他行星</td><td>太空舱</td><td>GT 线、高重力修行</td></tr>
+    <tr><td>未来地球 / 全王宫殿 / 无之界</td><td>剧情节点解锁</td><td>对应篇章</td></tr>
+    <tr><td>无尽厅堂（地下城）</td><td>O 键</td><td>日常刷怪赚祈子（见 <a href="dungeon.html">地下城</a>）</td></tr>
+    <tr><td>巅峰竞技场</td><td><code>/peak</code> / <code>/qya</code></td><td>排位 PvP（见 <a href="peak.html">巅峰赛</a>）</td></tr>
+    <tr><td>下谷（摸金）</td><td>O 键摸金行动</td><td>搜打撤（见 <a href="mojin.html">摸金行动</a>）</td></tr>
+    </tbody></table></div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

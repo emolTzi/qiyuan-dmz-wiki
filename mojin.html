@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>摸金行动 · 下谷搜打撤 — 祈愿龙珠 IDW</title>
+<meta name="description" content="摸金行动搜打撤玩法：45 分钟一局、暴露指数机制、五个撤离点坐标、安全箱与死亡惩罚、文明周期。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>摸金行动</h1><div class="en">Extraction · Xiagu</div>
+    <p class="lead">进入地图「下谷」，搜刮物资、击败敌人，<b style="color:var(--gold)">从撤离点带出去的才算你的</b>。死亡会丢掉身上没存进安全箱的一切。</p>
+  </header>
+
+  <div class="ki-group-title reveal"><h4>怎么进</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· 按 <span class="kbd">O</span> → 摸金行动 → 读完本局与撤离提示 →「整备并进入一局」。</p>
+    <p>· <code>/mojin</code> 等指令对普通玩家只显示 O 键提示，<b>不能绕过整备流程</b>；图内无法传送逃跑，撤离或「放弃本局」才会回来。</p>
+    <p>· 每局最长 <b>45 分钟</b>；每天 <b>4 次</b>进入机会（精力），每天凌晨 4:00 重置。</p>
+    <p>· 地图<b>每小时 :03 整点回档重置</b>（北京时间）：地形复原、物资重刷；恢复期间暂时进不去，临近整点开局会提示提前结束。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>撤离点</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>撤离点</th><th>位置 / 条件</th></tr></thead><tbody>
+    <tr><td>北线（常驻）</td><td>地图北侧 (0, 72, -900)</td></tr>
+    <tr><td>南线（常驻）</td><td>地图南侧 (32, 87, 800)</td></tr>
+    <tr><td>潜行撤离</td><td>(64, 70, -600)，<b>暴露值 &lt; 30</b> 才能启动</td></tr>
+    <tr><td>夜行撤离</td><td>(96, 77, 600)，仅游戏时间 <b>22:00–04:00</b></td></tr>
+    <tr><td>付费信标</td><td>(0, 79, 0)，消耗 <b>500 摸金积分</b>，随时可用</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    撤离倒计时 <b>15 秒</b>（高级区 20 秒）；圈内每多一名队友 −2 秒，下限 8 秒；撤离中<b style="color:var(--red)">被击中 +3 秒</b>——最后一程别恋战。
+  </div>
+
+  <div class="ki-group-title reveal"><h4>暴露指数（本玩法的灵魂）</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">你的每个动作都会积累暴露值（自然衰减 1/秒）。</p>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 10px;font-size:15px">行为积累</h3>
+      <div class="ftable-scroll"><table class="ft">
+        <thead><tr><th>行为</th><th>暴露</th></tr></thead><tbody>
+        <tr><td>采集矿脉</td><td>+5</td></tr>
+        <tr><td>开箱</td><td>+8</td></tr>
+        <tr><td>击杀精英</td><td>+15</td></tr>
+        <tr><td>释放蓄力技能</td><td>+20</td></tr>
+        <tr><td>击杀玩家</td><td>+25</td></tr>
+        <tr><td>拾取高价值物资</td><td>+30</td></tr>
+        </tbody></table></div></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 10px;font-size:15px">阈值后果</h3>
+      <div class="ftable-scroll"><table class="ft">
+        <thead><tr><th>阈值</th><th>后果</th></tr></thead><tbody>
+        <tr><td><b>50</b> 心悸</td><td>屏幕警告，怪群开始注意你</td></tr>
+        <tr><td><b>80</b> 锁定</td><td>精英怪集结围剿</td></tr>
+        <tr><td><b>100</b> 广播</td><td>「黑暗森林打击」全图广播你的位置</td></tr>
+        </tbody></table></div></div>
+  </div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    巅峰系数 ≥1.4 的强者入场自带 +15 暴露——数值越高，越要苟。
+  </div>
+
+  <div class="ki-group-title reveal"><h4>死亡与保险</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· <b>死亡掉装备</b>：基础区掉落概率 30%，最高危险区 60%；掉落物有 10 秒保护期（只有击杀者能捡）。</p>
+    <p>· <b>安全箱</b>是保底：初始 3 格，随境界提升 +2 格（上限 9 格）。开图后先把贵重物品存进安全箱（O 键行动终端里操作），死也死得体面。</p>
+    <p>· <b>连捷</b>：行动期间连续得手有收益加成，每次 +2%，最高 +10%。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>文明周期（地图有作息）</h4><div class="line"></div></div>
+  <div class="stat-grid">
+    <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px;color:#59ffa0">活跃期 10:00–22:00</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">物资丰富但竞争激烈；每小时地图稳定度 −8.33，12 小时归零。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px;color:var(--cyan)">寂静期</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">产出 ×0.5，但怪也相对安静。</p></div>
+    <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px;color:var(--red)">崩塌</h3>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">稳定度低于 20 进入崩塌阶段——地图持续掉血，速撤。</p></div>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>物资与地形</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>· 刷新节奏：普通箱 5 分钟、精英箱 15 分钟、矿脉 30 分钟、Boss 1 小时。</p>
+    <p>· 地图内<b>可以自由挖/放方块</b>（气弹爆炸也有效），但方块<b>不掉落物品</b>——资源全靠物资箱与矿脉，别想挖矿发财；每小时整点地形回滚复原。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>收益与定位</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    <p>· 摸金产出各类高价值材料与专属物资，用<b>摸金积分</b>（独立货币）结算付费撤离等。</p>
+    <p>· 撤离成功才算数：跑到撤离点 → 站圈 → 倒计时结束 → 结算带出。</p>
+    <p>· 一句话攻略：<b style="color:var(--gold)">轻装进、稳着搜、存保险、早撤离。</b></p>
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>

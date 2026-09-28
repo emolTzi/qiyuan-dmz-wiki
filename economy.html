@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经济与商城 · 祈子的赚与花 — 祈愿龙珠 IDW</title>
+<meta name="description" content="祈子货币体系：赚取途径、商城消费、战利品回收、玩家交易与拍卖行全指南。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="bg-orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="bg-grid"></div>
+<main class="page"><div class="wrap">
+
+  <header class="page-hero">
+    <a class="crumb" href="play.html">← 玩法星域</a>
+    <h1>经济与商城</h1><div class="en">Economy &amp; Shop</div>
+    <p class="lead">本服货币是<b style="color:var(--gold)">祈子</b>。签到、刷本、推剧情赚进来，技能点商城、补给、复活花出去——祈子可以直接换战力。</p>
+  </header>
+
+  <div class="ki-group-title reveal"><h4>祈子怎么赚</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>途径</th><th>收入</th><th>说明</th></tr></thead><tbody>
+    <tr><td>每日签到</td><td>100 / 天</td><td>O 键 → 商城与日常 →「领取修行签到」，天天别忘</td></tr>
+    <tr><td>地下城杀怪</td><td>5 / 只</td><td>无尽厅堂稳定收入，见 <a href="dungeon.html">地下城</a></td></tr>
+    <tr><td>剧情任务</td><td>大额一次性</td><td>多数剧情任务带祈子奖励，见 <a href="saga.html">剧情与龙珠</a></td></tr>
+    <tr><td>天梯层证/素材兑换</td><td>500 ~ 50,000</td><td>FTB 任务「天梯素材录 / 兑换所」，见 <a href="dungeon.html">地下城</a></td></tr>
+    <tr><td>战利品回收</td><td>按物品价值</td><td>见下文</td></tr>
+    <tr><td>物品出售</td><td>按价值</td><td><code>/qysell hand</code> 卖手持整组、<code>/qysell all</code> 卖主背包全部</td></tr>
+    <tr><td>玩家交易</td><td>议价</td><td><code>/pay</code>、拍卖行、面对面交易</td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>祈子怎么花</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>消费</th><th>价格</th><th>说明</th></tr></thead><tbody>
+    <tr><td><b>技能点商城</b></td><td><b>10 祈子 = 1 TP</b></td><td>O 键 → 技能点；档位 10/100/1000/10000/100000，可自定义，无每日上限</td></tr>
+    <tr><td>修行补给</td><td>80</td><td>8 份熟牛肉，日限 16 次</td></tr>
+    <tr><td>胶囊储物箱</td><td>500</td><td>一个末影箱，日限 2 次</td></tr>
+    <tr><td>复活服务</td><td>余额的 2%</td><td>死后不想等 180 秒？O 键立即复活，见 <a href="rebirth.html">死亡与转世</a></td></tr>
+    <tr><td>开拓地下城铁门</td><td>100 / 扇</td><td>无尽厅堂扩区</td></tr>
+    <tr><td>摸金付费撤离</td><td>500 摸金积分</td><td>扣的是摸金积分，不是祈子，见 <a href="mojin.html">摸金行动</a></td></tr>
+    </tbody></table></div>
+
+  <div class="ki-group-title reveal"><h4>战利品回收</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
+    <p>O 键 → 战利品回收：</p>
+    <p>· 只回收<b>物品说明里带「价值：xx祈子」行</b>的物品（副本/天梯/活动掉落物大多可回收）；</p>
+    <p>· <b>手续费 20%</b>：到账 = 整组总价值 × 80%；</p>
+    <p>· 档位按件数选：1 / 5 / 10 / 100 / 全部；</p>
+    <p>· 回收记录服务器留存，出错可找管理员核查。</p>
+  </div>
+
+  <div class="ki-group-title reveal"><h4>玩家间交易</h4><div class="line"></div></div>
+  <div class="ftable-scroll reveal"><table class="ft">
+    <thead><tr><th>指令</th><th>作用</th></tr></thead><tbody>
+    <tr><td><code>/pay 玩家 金额</code></td><td>转账</td></tr>
+    <tr><td><code>/money</code>（/balance、/bal）</td><td>查余额；<code>/money top</code> 看排行榜</td></tr>
+    <tr><td><code>/ah</code></td><td>打开拍卖行；<code>/ah sell 起拍价 [一口价]</code> 上架手持物品</td></tr>
+    <tr><td><code>/trade 玩家</code></td><td>面对面安全交易（对方 accept 后双向放物）</td></tr>
+    <tr><td><code>/bounty set 玩家 金额</code></td><td>悬赏；<code>/bounty list</code> 看赏金榜</td></tr>
+    </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
+    <b style="color:var(--red)">防骗提示：</b>大额交易建议走拍卖行或 <code>/trade</code>；线下私下交易出了问题管理员难以追回。
+  </div>
+
+  <div class="ki-group-title reveal"><h4>经济小贴士</h4><div class="line"></div></div>
+  <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:2">
+    <p>· 前期现金流：签到 + 地下城 + 剧情任务，足够覆盖日常「10 祈子 = 1 TP」的消耗。</p>
+    <p>· 层证兑换是大额祈子的主要来源，巅峰赛段位越高收益越大。</p>
+    <p>· 拍卖行捡漏/倒卖高级材料（审判核心、大魔龙珠等）是后期玩法。</p>
+  </div>
+
+</div></main>
+<script src="assets/js/cosmos.js?v=5"></script>
+</body>
+</html>
