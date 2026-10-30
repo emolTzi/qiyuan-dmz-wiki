@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -35,7 +35,7 @@
   <div class="ki-group-title reveal"><h4>匹配与对局</h4><div class="line"></div></div>
   <div class="stat-grid">
     <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">匹配机制</h3>
-      <p style="font-size:13px;color:var(--dim);line-height:1.8">按战力匹配，初始容差 ±25%，每等 15 秒放宽一档，上限 ±85%；等待 120 秒后不满员也会开局。</p></div>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">按战力匹配，初始容差 ±25%，每秒放宽 0.6 个百分点，上限 ±85%；等待 120 秒后允许人数未满的对局，仍须有满足条件的对手。</p></div>
     <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">对局流程</h3>
       <p style="font-size:13px;color:var(--dim);line-height:1.8">生成场地 → 10 秒倒计时（锁定生存模式）→ 开战；单场 5 分钟，超时按剩余血量比例判定；平分进入 60 秒<b>骤死</b>。</p></div>
     <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">阵亡与逃跑</h3>
@@ -49,9 +49,9 @@
     <thead><tr><th>规则</th><th>数值</th></tr></thead><tbody>
     <tr><td>初始积分</td><td>1000 分</td></tr>
     <tr><td>胜负结算</td><td>胜 <b>+24</b> 起，败 <b>−18</b> 起；连胜每场额外 +6（封顶 +18），连败有减免；分差修正 ±40% 封顶</td></tr>
-    <tr><td>新手保护</td><td>前 10 场失败扣分减半，积分下限 1000</td></tr>
+    <tr><td>新手保护</td><td>前 10 场失败扣分减半，保护期积分下限 1000，保护期后下限 0</td></tr>
     <tr><td>不打衰减</td><td>积分超过 1600 后，连续 7 天不打开始每天 −10</td></tr>
-    <tr><td>赛季软重置</td><td>新赛季保留 50% 积分</td></tr>
+    <tr><td>赛季软重置</td><td>新积分 = 1000 +（旧积分 − 1000）×50%</td></tr>
     <tr><td>段位播报</td><td>升降段全服/个人播报；段位凭证（层证、界徽）在对局中掉落，可在任务书兑换祈子（见 <a href="dungeon.html">地下城</a>）</td></tr>
     </tbody></table></div>
 
@@ -70,6 +70,6 @@
   </div>
 
 </div></main>
-<script src="assets/js/cosmos.js?v=5"></script>
+<script src="assets/js/cosmos.js?v=7"></script>
 </body>
 </html>

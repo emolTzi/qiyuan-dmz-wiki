@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -20,7 +20,7 @@
   <header class="page-hero">
     <a class="crumb" href="play.html">← 玩法星域</a>
     <h1>地下城</h1><div class="en">Dungeon &amp; Exchange</div>
-    <p class="lead">无尽厅堂是日常赚祈子的主场地：免费进入、无时间限制。活动副本与巅峰赛掉落则通向兑换所的大额祈子。</p>
+    <p class="lead">无尽厅堂是日常赚祈子的主场地：免费进入、无时间限制。活动副本与巅峰赛掉落则通向兑换所的大额祈子。<span class="tag" title="素材来源与兑换收益未经核实">未核实</span></p>
   </header>
 
   <!-- 无尽厅堂 -->
@@ -29,9 +29,9 @@
     <div class="stat-card panel reveal"><h3 style="margin:0 0 8px;font-size:15px">进入</h3>
       <p style="font-size:13px;color:var(--dim);line-height:1.8">按 <span class="kbd">O</span> → 地下城 →「进入地下城」，或 <code>/qyd enter</code>。会被传送到专属维度的一条出生环走廊。</p></div>
     <div class="stat-card panel reveal" data-delay="1"><h3 style="margin:0 0 8px;font-size:15px">开拓</h3>
-      <p style="font-size:13px;color:var(--dim);line-height:1.8">走廊两侧是封闭铁栏门，每扇门后是 50×50 未知区域。对准门右键（或 <code>/qyd expand</code>）花 <b>100 祈子</b>开拓。</p></div>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">走廊两侧是封闭铁栏门，每扇门后是 50×50 未知区域。对准门右键（或 <code>/qyd expand</code>）按 <b>100 祈子基础价 × 区域系数 × 开拓阶段系数</b>开拓。</p></div>
     <div class="stat-card panel reveal" data-delay="2"><h3 style="margin:0 0 8px;font-size:15px">收益</h3>
-      <p style="font-size:13px;color:var(--dim);line-height:1.8">击杀副本内怪物每只 <b>+5 祈子</b>直接进账；区域内有战利品宝箱。</p></div>
+      <p style="font-size:13px;color:var(--dim);line-height:1.8">副本配置的基础击杀奖励为 <b>100 祈子/只</b>，<span class="tag" title="击杀奖励实际结算路径未经核实">未核实</span> 实际到账以结算提示为准；区域内有战利品宝箱。</p></div>
     <div class="stat-card panel reveal" data-delay="3"><h3 style="margin:0 0 8px;font-size:15px">规则</h3>
       <p style="font-size:13px;color:var(--dim);line-height:1.8">无时间限制、无进入冷却；禁止 PvP、禁止挖掘/放置；掉出虚空自动救回。</p></div>
   </div>
@@ -51,6 +51,7 @@
 
   <!-- 天梯素材录 -->
   <div class="ki-group-title reveal"><h4>天梯素材录（一次性任务）</h4><div class="line"></div></div>
+  <p class="ft-note"><span class="tag">未核实</span> 材料来源、数量、兑价与一次性规则尚未核实。</p>
   <p class="reveal" style="font-size:13px;color:var(--dim2);margin:0 0 12px">材料来自巅峰赛排位对局掉落，物品说明里标注了对应层数/段位。在 V 菜单任务书提交。</p>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>提交物</th><th>数量</th><th>到账祈子</th></tr></thead><tbody>
@@ -64,6 +65,7 @@
 
   <!-- 兑换所 -->
   <div class="ki-group-title reveal"><h4>兑换所（层证可无限重复交）</h4><div class="line"></div></div>
+  <p class="ft-note"><span class="tag">未核实</span> 以下兑价、重复兑换与一次性规则尚未核实。</p>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>提交物</th><th>到账祈子</th></tr></thead><tbody>
     <tr><td>祈愿层证 · 一重</td><td>500</td></tr>
@@ -78,10 +80,10 @@
     <tr><td>名人堂 · 冠军戒指 / 完全体细胞核（各一次性）</td><td>各 20,000</td></tr>
     </tbody></table></div>
   <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
-    层证与界徽是巅峰赛段位的实物凭证——段位越高，掉的可兑换物越值钱。玩法详见 <a href="peak.html">巅峰赛</a>。
+    <span class="tag" title="层证、界徽的来源与兑换通路未经核实">未核实</span> 层证与界徽是巅峰赛段位的实物凭证——段位越高，掉的可兑换物越值钱。玩法详见 <a href="peak.html">巅峰赛</a>。
   </div>
 
 </div></main>
-<script src="assets/js/cosmos.js?v=5"></script>
+<script src="assets/js/cosmos.js?v=7"></script>
 </body>
 </html>

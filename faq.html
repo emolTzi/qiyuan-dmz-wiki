@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -26,7 +26,7 @@
   <div class="ki-group-title reveal"><h4>登录相关</h4><div class="line"></div></div>
   <div class="stat-grid">
     <div class="stat-card panel reveal"><p class="qa-q">进服提示需要登录/注册？</p>
-      <p class="qa-a">本服为离线模式+密码保护。首次进服 <code>/register 密码 密码</code>，之后每次 <code>/login 密码</code>。密码忘了只能找管理员在后台重置。</p></div>
+      <p class="qa-a">本服为离线模式+密码保护。首次进服 <code>/register 密码 密码</code>，之后每次 <code>/login 密码</code>。密码忘了只能找管理员在后台重置。<span class="tag" title="离线登录方式及插件命令未经生产核实">未核实</span></p></div>
     <div class="stat-card panel reveal" data-delay="1"><p class="qa-q">进服被踢，提示 mod 校验失败 / 版本不一致？</p>
       <p class="qa-a">客户端整合包版本落后于服务器（服务器会不定期更新）。找管理员拿最新整合包，<b>不要</b>只换 mod 名字猜测版本。</p></div>
     <div class="stat-card panel reveal" data-delay="2"><p class="qa-q">延迟高 / 卡顿？</p>
@@ -38,21 +38,21 @@
     <div class="stat-card panel reveal"><p class="qa-q">想换种族/职业怎么办？</p>
       <p class="qa-a">换种族 = 找<b>丹迪</b>对话选重置（会清空属性、技能、任务全部进度，重登后重新创角）；换职业 = 目前随换种族重新建角选择。<b>洗点</b>（只返还属性点）也找丹迪选「重置属性」，或龙珠许愿「属性重分配」。见 <a href="rebirth.html">死亡与转世</a>。</p></div>
     <div class="stat-card panel reveal" data-delay="1"><p class="qa-q">转世会丢什么？</p>
-      <p class="qa-a"><code>/reincarnate</code> 转世<b>保留形态与技能</b>，只清减已分配属性点（第 1 转保留 50% 可自由重分，之后每转递减），换来 TP 成本变平、正念上限提升、敌人与奖励同步增强。</p></div>
+      <p class="qa-a"><code>/astra next</code> 查缺项，在祈愿坛完成转世<b>保留形态与技能</b>，六维回初始模板，将超出初始模板的已分配点与待分配点按本转比例返还（第 1 转 50%，向下取整）。当前只开放 1 转，需完成旅程、试炼与圣化龙珠；TP 成本斜率降至 0.75。</p></div>
     <div class="stat-card panel reveal" data-delay="2"><p class="qa-q">为什么我学不了沙鲁/弗利萨的招？</p>
-      <p class="qa-a">他们只收<b>恶阵营</b>（≤40）的弟子；龟仙人、悟空等只收<b>善阵营</b>（≥61）。<code>/dmzalignment</code> 查看自己阵营。见 <a href="skills.html">技能星座</a>。</p></div>
+      <p class="qa-a">他们只收<b>恶阵营</b>（≤40）的弟子；龟仙人、悟空等只收<b>善阵营</b>（≥61）。按 <b>V → 属性</b> 查看自己阵营。见 <a href="skills.html">技能星座</a>。</p></div>
     <div class="stat-card panel reveal" data-delay="3"><p class="qa-q">按 C 聚气没反应？</p>
-      <p class="qa-a">先确认学会了<b>控气（Ki Control）</b>——没学它不能蓄气、飞行、放招。找任意基础导师花 3,000 TP 学习。</p></div>
+      <p class="qa-a">先确认学会了<b>控气（Ki Control）</b>——没学它不能蓄气、飞行、放招。新手道场会免费赠送气控制、飞行、气感知和龟派气功各 1 级；先确认已进入道场并创建角色。</p></div>
     <div class="stat-card panel reveal"><p class="qa-q">变身按钮按了没效果？</p>
-      <p class="qa-a">检查三件事：形态组技能等级够不够 → 上一形态熟练度是否 ≥25%（按住 <span class="kbd">G</span> 是蓄力变身，松开才生效）→ 气是否够维持。见 <a href="forms-guide.html">形态星轨</a>。</p></div>
+      <p class="qa-a">检查三件事：形态组技能等级够不够 → 上一形态熟练度是否达到该形态门槛（基础链多为 25%，附加形态另有要求）（按住 <span class="kbd">G</span> 是蓄力变身，松开才生效）→ 气是否够维持。见 <a href="forms-guide.html">形态星轨</a>。</p></div>
   </div>
 
   <div class="ki-group-title reveal"><h4>物品与进度</h4><div class="line"></div></div>
   <div class="stat-grid">
     <div class="stat-card panel reveal"><p class="qa-q">死了会掉东西吗？</p>
-      <p class="qa-a">不会。死亡保留全部物品，在地府等 180 秒免费复活，或 O 键付余额 2% 立即复活。但<b>摸金地图例外</b>：死亡按规则掉装备，只有安全箱里的东西保得住。见 <a href="rebirth.html">死亡与转世</a>、<a href="mojin.html">摸金行动</a>。</p></div>
+      <p class="qa-a">普通世界死亡保留全部物品 <span class="tag" title="普通世界死亡保留规则未经生产核实">未核实</span>，默认等 180 秒后在占卜婆婆处免费复活；也可在婆婆附近用 O 键付余额 2% 跳过等待（不封顶）。但<b>摸金地图例外</b>：死亡按规则掉装备，只有安全箱里的东西保得住。见 <a href="rebirth.html">死亡与转世</a>、<a href="mojin.html">摸金行动</a>。</p></div>
     <div class="stat-card panel reveal" data-delay="1"><p class="qa-q">卡在地府/卡在副本里出不来？</p>
-      <p class="qa-a">地府：找阎魔大王送回，或等复活流程走完。副本：<code>/qyd leave</code>。摸金：完成撤离或在 O 键行动终端选「放弃本局」。都不行就退出重进，再不行找管理员。</p></div>
+      <p class="qa-a">地府：等待免费复活倒计时结束后找占卜婆婆；付费跳过等待也需在婆婆附近。副本：<code>/qyd leave</code>。摸金：完成撤离或在 O 键行动终端选「放弃本局」。都不行就退出重进，再不行找管理员。</p></div>
     <div class="stat-card panel reveal" data-delay="2"><p class="qa-q">剧情任务卡住不动了？</p>
       <p class="qa-a">确认追踪的任务目标与地点（V 菜单看详情）；确认难度与队友一致；还是不行请在群里反馈，管理员可后台修复任务状态。</p></div>
     <div class="stat-card panel reveal" data-delay="3"><p class="qa-q">龙珠雷达怎么造？</p>
@@ -62,13 +62,13 @@
   <div class="ki-group-title reveal"><h4>经济与玩法</h4><div class="line"></div></div>
   <div class="stat-grid">
     <div class="stat-card panel reveal"><p class="qa-q">祈子来钱最快的方式？</p>
-      <p class="qa-a">前期：签到（100/天）+ 地下城杀怪（5/只）+ 剧情任务；中期：天梯层证兑换（一重 500 ~ 五重 40,000）；后期：拍卖行倒卖稀有材料 + 巅峰赛高段位。见 <a href="economy.html">经济与商城</a>。</p></div>
-    <div class="stat-card panel reveal" data-delay="1"><p class="qa-q">10 祈子 = 1 点 TP 划算吗？</p>
+      <p class="qa-a">前期：签到（100/天）+ 地下城杀怪（配置基础奖励 100/只；实际结算路径 <span class="tag">未核实</span>，以结算提示为准）+ 剧情任务；中期：天梯层证兑换（一重 500 ~ 五重 40,000）<span class="tag" title="层证兑价、剧情祈子与段位收益未经核实">未核实</span>；后期：拍卖行倒卖稀有材料 + 巅峰赛高段位。见 <a href="economy.html">经济与商城</a>。</p></div>
+    <div class="stat-card panel reveal" data-delay="1"><p class="qa-q">1 祈子 = 10 点 TP 划算吗？</p>
       <p class="qa-a">前期自己练更快（战斗/聚气/任务奖励量很大）；中后期属性单点变贵、时间值钱时，商城兑换是快速成型手段。两者不冲突。</p></div>
     <div class="stat-card panel reveal" data-delay="2"><p class="qa-q">摸金的「暴露值」怎么降？</p>
       <p class="qa-a">自然衰减 1/秒。少开箱少放技能、绕开精英、捡了高价值物资立刻去撤离——潜行撤离点要求暴露 &lt;30，苟住才能带走。见 <a href="mojin.html">摸金行动</a>。</p></div>
     <div class="stat-card panel reveal" data-delay="3"><p class="qa-q">巅峰赛为什么匹配不到人？</p>
-      <p class="qa-a">按战力匹配，人少时容差会逐步放宽（最多 ±85%），等满 120 秒会强制开局；六维总和 &lt;300 无法排队。见 <a href="peak.html">巅峰赛</a>。</p></div>
+      <p class="qa-a">按战力匹配，人少时容差会逐步放宽（最多 ±85%），等满 120 秒后可放宽满员要求，但仍需符合条件的对手；六维总和 &lt;300 无法排队。见 <a href="peak.html">巅峰赛</a>。</p></div>
   </div>
 
   <div class="ki-group-title reveal"><h4>其他</h4><div class="line"></div></div>
@@ -82,6 +82,6 @@
   </div>
 
 </div></main>
-<script src="assets/js/cosmos.js?v=5"></script>
+<script src="assets/js/cosmos.js?v=7"></script>
 </body>
 </html>

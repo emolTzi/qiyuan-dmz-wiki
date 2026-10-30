@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>摸金行动 · 下谷搜打撤 — 祈愿龙珠 IDW</title>
+<title>摸金行动 · 归墟峡谷搜打撤 — 祈愿龙珠 IDW</title>
 <meta name="description" content="摸金行动搜打撤玩法：45 分钟一局、暴露指数机制、五个撤离点坐标、安全箱与死亡惩罚、文明周期。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -20,7 +20,7 @@
   <header class="page-hero">
     <a class="crumb" href="play.html">← 玩法星域</a>
     <h1>摸金行动</h1><div class="en">Extraction · Xiagu</div>
-    <p class="lead">进入地图「下谷」，搜刮物资、击败敌人，<b style="color:var(--gold)">从撤离点带出去的才算你的</b>。死亡会丢掉身上没存进安全箱的一切。</p>
+    <p class="lead">进入地图「归墟峡谷」，搜刮物资、击败敌人，<b style="color:var(--gold)">从撤离点带出去的才算你的</b>。死亡掉落安全箱外的背包与副手物品，护甲按区域概率掉落。</p>
   </header>
 
   <div class="ki-group-title reveal"><h4>怎么进</h4><div class="line"></div></div>
@@ -34,14 +34,14 @@
   <div class="ki-group-title reveal"><h4>撤离点</h4><div class="line"></div></div>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>撤离点</th><th>位置 / 条件</th></tr></thead><tbody>
-    <tr><td>北线（常驻）</td><td>地图北侧 (0, 72, -900)</td></tr>
-    <tr><td>南线（常驻）</td><td>地图南侧 (32, 87, 800)</td></tr>
-    <tr><td>潜行撤离</td><td>(64, 70, -600)，<b>暴露值 &lt; 30</b> 才能启动</td></tr>
-    <tr><td>夜行撤离</td><td>(96, 77, 600)，仅游戏时间 <b>22:00–04:00</b></td></tr>
-    <tr><td>付费信标</td><td>(0, 79, 0)，消耗 <b>500 摸金积分</b>，随时可用</td></tr>
+    <tr><td>北线（常驻）</td><td>地图北侧 (29, 27, -1167)</td></tr>
+    <tr><td>南线（常驻）</td><td>地图南侧 (-611, 20, 847)</td></tr>
+    <tr><td>潜行撤离</td><td>(-948, 10, -631)，<b>暴露值 &lt; 30</b> 才能启动</td></tr>
+    <tr><td>夜行撤离</td><td>(862, 23, 941)，仅游戏时间 <b>22:00–04:00</b></td></tr>
+    <tr><td>付费信标</td><td>(-17, 84, 330)，消耗 <b>500 摸金积分</b>，随时可用</td></tr>
     </tbody></table></div>
   <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
-    撤离倒计时 <b>15 秒</b>（高级区 20 秒）；圈内每多一名队友 −2 秒，下限 8 秒；撤离中<b style="color:var(--red)">被击中 +3 秒</b>——最后一程别恋战。
+    撤离倒计时 <b>15 秒</b>（条件撤离点 20 秒；付费信标固定 3 秒，不享受队友减时）；圈内每多一名队友 −2 秒，下限 8 秒；撤离中<b style="color:var(--red)">被击中 +3 秒</b>——最后一程别恋战。
   </div>
 
   <div class="ki-group-title reveal"><h4>暴露指数（本玩法的灵魂）</h4><div class="line"></div></div>
@@ -71,7 +71,7 @@
 
   <div class="ki-group-title reveal"><h4>死亡与保险</h4><div class="line"></div></div>
   <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
-    <p>· <b>死亡掉装备</b>：基础区掉落概率 30%，最高危险区 60%；掉落物有 10 秒保护期（只有击杀者能捡）。</p>
+    <p>· <b>死亡掉装备</b>：护甲掉落概率 = min(60%, 30% + 区域死亡损失系数)，归墟峡谷为 40%，最高危险区 60%；背包与副手掉落物有 10 秒拾取延迟，期间任何人都不能捡；护甲掉落没有这段额外延迟。</p>
     <p>· <b>安全箱</b>是保底：初始 3 格，随境界提升 +2 格（上限 9 格）。开图后先把贵重物品存进安全箱（O 键行动终端里操作），死也死得体面。</p>
     <p>· <b>连捷</b>：行动期间连续得手有收益加成，每次 +2%，最高 +10%。</p>
   </div>
@@ -89,7 +89,7 @@
   <div class="ki-group-title reveal"><h4>物资与地形</h4><div class="line"></div></div>
   <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
     <p>· 刷新节奏：普通箱 5 分钟、精英箱 15 分钟、矿脉 30 分钟、Boss 1 小时。</p>
-    <p>· 地图内<b>可以自由挖/放方块</b>（气弹爆炸也有效），但方块<b>不掉落物品</b>——资源全靠物资箱与矿脉，别想挖矿发财；每小时整点地形回滚复原。</p>
+    <p>· 地图内<b>可以自由挖/放方块</b>（气弹爆炸也有效），但方块<b>不掉落物品</b>——资源全靠物资箱与矿脉，别想挖矿发财；每小时 :03 地形回滚复原。</p>
   </div>
 
   <div class="ki-group-title reveal"><h4>收益与定位</h4><div class="line"></div></div>
@@ -100,6 +100,6 @@
   </div>
 
 </div></main>
-<script src="assets/js/cosmos.js?v=5"></script>
+<script src="assets/js/cosmos.js?v=7"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -24,6 +24,7 @@
   </header>
 
   <div class="ki-group-title reveal"><h4>登录与账号</h4><div class="line"></div></div>
+  <p class="ft-note"><span class="tag">未核实</span> 登录插件的命令语法、别名与权限尚未完成生产核实。</p>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
     <tr><td><code>/register &lt;密码&gt; &lt;密码&gt;</code></td><td>首次进服注册</td></tr>
@@ -32,15 +33,16 @@
     </tbody></table></div>
 
   <div class="ki-group-title reveal"><h4>自我查询</h4><div class="line"></div></div>
+  <p class="ft-note">以下 7 个查看命令均为玩家默认就有权限的自我查询命令，直接输入即可；右侧界面路径可作补充。</p>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
-    <tr><td><code>/dmzstats</code></td><td>查看自己的六维属性</td></tr>
-    <tr><td><code>/dmzpoints</code></td><td>查看可分配的训练点</td></tr>
-    <tr><td><code>/dmzskill</code></td><td>查看已学技能</td></tr>
-    <tr><td><code>/dmztech</code></td><td>查看已学的气弹/打击技</td></tr>
-    <tr><td><code>/dmzform</code></td><td>查看已解锁形态</td></tr>
-    <tr><td><code>/dmzeffect</code></td><td>查看身上的 DMZ 效果</td></tr>
-    <tr><td><code>/dmzalignment</code></td><td>查看阵营值（善/中立/恶）</td></tr>
+    <tr><td><code>/dmzstats</code></td><td>查看自己的六维属性；界面：<code>V → 属性</code></td></tr>
+    <tr><td><code>/dmzpoints</code></td><td>查看可分配的训练点；界面：<code>V → 属性</code></td></tr>
+    <tr><td><code>/dmzskill</code></td><td>查看已学技能；界面：<code>V → 技能</code></td></tr>
+    <tr><td><code>/dmztech</code></td><td>查看已学的气弹/打击技；界面：<code>V → 技能 → 气功/打击</code></td></tr>
+    <tr><td><code>/dmzform</code></td><td>查看已解锁形态；界面：<code>V → 技能 → 形态</code></td></tr>
+    <tr><td><code>/dmzeffect</code></td><td>查看身上的 DMZ 效果；界面：<code>角色 HUD 效果栏</code></td></tr>
+    <tr><td><code>/dmzalignment</code></td><td>查看阵营值（善/中立/恶）；界面：<code>V → 属性</code></td></tr>
     <tr><td><code>/dmzquest list</code> / <code>info &lt;id&gt;</code> / <code>track &lt;id|none&gt;</code></td><td>任务进度/详情/追踪 ⚠ 任务 ID 里的 <code>:</code> 要写成 <code>.</code>，如 <code>saiyan_saga.1</code></td></tr>
     <tr><td><code>/money</code>（/balance、/bal）</td><td>查祈子余额；<code>/money top</code> 排行</td></tr>
     </tbody></table></div>
@@ -79,8 +81,8 @@
   <div class="ki-group-title reveal"><h4>转世</h4><div class="line"></div></div>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
-    <tr><td><code>/reincarnate</code></td><td>查看转世资格与说明</td></tr>
-    <tr><td><code>/reincarnate confirm</code></td><td>确认转世 ⚠ 不可逆，属性按转数保留规则清减（见 <a href="rebirth.html">死亡与转世</a>）</td></tr>
+    <tr><td><code>/astra next</code></td><td>查看本转等级、基础属性、旅程与试炼缺项</td></tr>
+    <tr><td><code>/astra balls</code> / <code>/astra materials</code></td><td>查询圣化球与材料；转世在祈愿坛按提示确认，旧 <code>/reincarnate</code> 仅引导 <span class="tag" title="旧命令注册与别名未经生产核实">未核实</span>，属性按转数保留规则清减（见 <a href="rebirth.html">死亡与转世</a>）</td></tr>
     <tr><td><code>/rules</code></td><td>查看服务器规则</td></tr>
     </tbody></table></div>
 
@@ -89,12 +91,12 @@
     <thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
     <tr><td><code>/spawn</code></td><td>回主城</td></tr>
     <tr><td><code>/home set</code> / <code>/home</code></td><td>设置/回家</td></tr>
-    <tr><td><code>/tpa &lt;玩家&gt;</code> / <code>/tpa here &lt;玩家&gt;</code></td><td>请求传送到对方 / 叫对方过来</td></tr>
+    <tr><td><code>/tpa &lt;玩家&gt;</code> / <code>/tpa &lt;玩家&gt; here</code></td><td>请求传送到对方 / 叫对方过来</td></tr>
     <tr><td><code>/back</code></td><td>回到上个位置（部分场景）</td></tr>
-    <tr><td><code>/plot auto</code></td><td>领取家园地皮</td></tr>
-    <tr><td><code>/plot home</code></td><td>回地皮</td></tr>
-    <tr><td><code>/plot visit &lt;玩家&gt;</code> / <code>add</code> / <code>trust</code> / <code>deny</code> / <code>remove</code></td><td>参观 / 授权建造 / 永久共管 / 拉黑 / 移除授权</td></tr>
-    <tr><td><code>/plot merge</code> / <code>unlink</code> / <code>info</code></td><td>合并 / 拆分 / 查看地皮</td></tr>
+    <tr><td><code>/plot auto</code></td><td>领取家园地皮 <span class="tag" title="外部插件命令语法与权限未经生产核实">未核实</span></td></tr>
+    <tr><td><code>/plot home</code></td><td>回地皮 <span class="tag" title="外部插件命令语法与权限未经生产核实">未核实</span></td></tr>
+    <tr><td><code>/plot visit &lt;玩家&gt;</code> / <code>add</code> / <code>trust</code> / <code>deny</code> / <code>remove</code></td><td>参观 / 授权建造 / 永久共管 / 拉黑 / 移除授权 <span class="tag" title="外部插件命令语法与权限未经生产核实">未核实</span></td></tr>
+    <tr><td><code>/plot merge</code> / <code>unlink</code> / <code>info</code></td><td>合并 / 拆分 / 查看地皮 <span class="tag" title="外部插件命令语法与权限未经生产核实">未核实</span></td></tr>
     </tbody></table></div>
 
   <div class="ki-group-title reveal"><h4>经济 / 交易</h4><div class="line"></div></div>
@@ -103,8 +105,8 @@
     <tr><td><code>/pay &lt;玩家&gt; &lt;金额&gt;</code></td><td>转账</td></tr>
     <tr><td><code>/ah</code></td><td>拍卖行；<code>/ah sell &lt;起拍价&gt; [一口价]</code> 上架手持</td></tr>
     <tr><td><code>/trade &lt;玩家&gt;</code></td><td>面对面交易（对方 accept）</td></tr>
-    <tr><td><code>/bounty set &lt;玩家&gt; &lt;金额&gt;</code> / <code>list</code> / <code>accept</code></td><td>悬赏</td></tr>
-    <tr><td><code>/qysell hand</code> / <code>all</code></td><td>出售带「价值」行的物品（手持整组 / 主背包全部）</td></tr>
+    <tr><td><code>/bounty set &lt;玩家&gt; &lt;金额&gt;</code> / <code>list</code> / <code>accept &lt;玩家&gt;</code></td><td>悬赏</td></tr>
+    <tr><td><code>/qysell hand</code> / <code>all</code></td><td>出售统一回收目录认可的物品（手持整组 / 主背包全部）</td></tr>
     </tbody></table></div>
 
   <div class="ki-group-title reveal"><h4>社交 / 其他</h4><div class="line"></div></div>
@@ -112,14 +114,14 @@
     <thead><tr><th>指令</th><th>说明</th></tr></thead><tbody>
     <tr><td><code>/pm &lt;玩家&gt; &lt;消息&gt;</code></td><td>私聊；<code>/pm clear</code> 清空</td></tr>
     <tr><td><code>/mail send &lt;玩家&gt; &lt;消息&gt;</code> / <code>read</code></td><td>离线邮件</td></tr>
-    <tr><td><code>/nickname &lt;名字&gt;</code>（<code>/nick</code>）</td><td>改自己昵称</td></tr>
+    <tr><td><code>/nickname setSelf &lt;名字&gt;</code>（<code>/nick</code>）</td><td>改自己昵称</td></tr>
     <tr><td><code>/afk</code></td><td>挂机状态</td></tr>
     <tr><td><code>/playtime [玩家]</code> / <code>top</code></td><td>游玩时长与排行</td></tr>
     <tr><td><code>/kit list</code> / <code>/kit &lt;名称&gt;</code></td><td>礼包列表 / 领取（如有限时礼包）</td></tr>
-    <tr><td><code>/crates</code></td><td>查看抽奖箱钥匙</td></tr>
-    <tr><td><code>/planet info [星球]</code> / <code>unstuck</code></td><td>星球信息 / 星球卡死自救</td></tr>
+    <tr><td><code>/crates</code></td><td>查看抽奖箱钥匙 <span class="tag" title="外部插件命令语法与权限未经生产核实">未核实</span></td></tr>
+    <tr><td><code>/planet info</code> / <code>unstuck</code></td><td>星球信息 / 星球卡死自救</td></tr>
     <tr><td><code>/help [页码]</code></td><td>命令帮助</td></tr>
-    <tr><td><code>/msg &lt;玩家&gt; &lt;消息&gt;</code></td><td>私聊（CMI 侧）</td></tr>
+    <tr><td><code>/msg &lt;玩家&gt; &lt;消息&gt;</code></td><td>私聊（CMI 侧） <span class="tag" title="外部插件命令语法与权限未经生产核实">未核实</span></td></tr>
     </tbody></table></div>
 
   <div class="ki-group-title reveal"><h4>服务器功能菜单（推荐用按键）</h4><div class="line"></div></div>
@@ -129,10 +131,10 @@
     <tr><td>角色面板（属性/技能/形态/剧情/小游戏）</td><td><span class="kbd">V</span></td></tr>
     <tr><td>动作轮盘（融合等）</td><td><span class="kbd">X</span></td></tr>
     <tr><td>瞬移/太空舱菜单</td><td><span class="kbd">H</span></td></tr>
-    <tr><td>FTB 任务书</td><td>任务书物品右键（新手教学自动引导）</td></tr>
+    <tr><td>原生新手教学</td><td>F6 打开教学；V → 任务可查看任务进度</td></tr>
     </tbody></table></div>
 
 </div></main>
-<script src="assets/js/cosmos.js?v=5"></script>
+<script src="assets/js/cosmos.js?v=7"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@ const reqName=req=>FORM_NAME_INDEX[req]||null;
 
 /* ---------------- 备注标签玩家化 ---------------- */
 function ntagHTML([k,t]){
+  if(k==='unverified')return `<span class="tag">${esc(t)}</span>`;
   if(k==='mdl')return `<span class="ntag mdl">专属外观</span>`;
   if(k==='shr')return `<span class="ntag shr">共享熟练度</span>`;
   if(k==='mut'){const m=t.match(/^互斥\s*(.+)$/);return `<span class="ntag mut">${m?`与「${m[1]}」互斥`:t}</span>`;}
@@ -68,12 +69,12 @@ function formTable(list){
       <td class="mas">${mas}</td><td style="white-space:normal;min-width:150px">${notes}</td></tr>`;
   }).join('');
   return `<div class="ftable-scroll"><table class="ft"><thead><tr>
-    <th>形态</th><th>解锁</th><th>力量</th><th>速度</th><th>抗性</th><th>气功</th><th>能量</th><th>移速</th><th>攻速</th>
+    <th>形态</th><th>解锁</th><th>力量</th><th>速度</th><th>防御</th><th>气功</th><th>能量</th><th>移速</th><th>攻速</th>
     <th>气耗</th><th>体耗</th><th>血耗</th><th>前置形态</th><th>门槛<small style="display:block;font-size:9px;color:var(--dim2)">变/叠/瞬/自</small></th><th>被动 / 备注</th></tr></thead>
     <tbody>${rows}</tbody></table></div>`;
 }
 function formGroupHTML(g){
-  const tp=g.tp?`<span class="fg-tp">TP 售价：<b>${g.tp.map(p=>p===-1?'任务解锁':p.toLocaleString()).join(' / ')}</b></span>`:'';
+  const tp=g.tp?`<span class="fg-tp">TP 售价：<b>${g.tp.map(p=>p===-1?'特殊解锁':p.toLocaleString()).join(' / ')}</b> <span class="tag" title="种族形态价格覆盖未经生产核实">未核实</span></span>`:'';
   return `<div class="form-group reveal">
     <div class="fg-head"><h5>${g.group}</h5><span class="fg-count">${g.list.length} 形态</span>${tp}</div>
     ${formTable(g.list)}</div>`;
@@ -118,7 +119,7 @@ function formGroupHTML(g){
   document.title=`${r.name} · 种族图鉴 — 祈愿龙珠 IDW`;
   const statsBars=r.stats.map((v,i)=>barRow(STAT_KEYS[i],v,5,STAT_META[i].color)).join('');
   const growthBars=r.growth.map((v,i)=>barRow(GROWTH_KEYS[i],v,2,'#3ee2ff')).join('');
-  const tp=r.tp.map(([g,arr])=>`<span class="tag ${arr[0]===-1?'rd':'gold'}">${g}：${arr.map(p=>p===-1?'任务解锁':p.toLocaleString()).join(' / ')}</span>`).join('');
+  const tp=r.tp.map(([g,arr])=>`<span class="tag ${arr[0]===-1?'rd':'gold'}">${g}：${arr.map(p=>p===-1?'特殊解锁':p.toLocaleString()).join(' / ')}</span>`).join('');
   const groups=r.forms.map(g=>{
     const tpArr=r.tp.find(t=>t[0]===g.group);
     return formGroupHTML({...g,tp:tpArr?tpArr[1]:null});
@@ -136,20 +137,20 @@ function formGroupHTML(g){
           <span class="tag" style="border-color:${r.aura};color:${r.aura}">气焰 ●</span></div>
       </div>
       <div class="rp-cols">
-        <div class="rp-block panel reveal"><h4>初始六维</h4>
+        <div class="rp-block panel reveal"><h4>初始六维 <span class="tag" title="代码默认值，未经生产核实">未核实</span></h4>
           <div style="display:flex;justify-content:center;margin-bottom:8px">${radar(r.stats,r.color,210)}</div>
           ${statsBars}
           <div class="res-mini" style="margin-top:14px">
-            <span>生命基础 <b>${RACE_RES_COMMON.hp5}</b></span><span>生命/体质 <b>${RACE_RES_COMMON.hp5v}</b></span>
-            <span>气基础 <b>${RACE_RES_COMMON.ep5}</b></span><span>气/能量 <b>${RACE_RES_COMMON.ep5e}</b></span>
-            <span>体力基础 <b>${RACE_RES_COMMON.sp5}</b></span><span>体力/耐力 <b>${RACE_RES_COMMON.sp5s}</b></span>
+            <span>生命回复/5秒 <b>${!['human','saiyan','namekian','frostdemon','bioandroid','majin'].includes(r.id)?'5':RACE_RES_COMMON.hp5}</b></span><span>回复/体质 <b>${!['human','saiyan','namekian','frostdemon','bioandroid','majin'].includes(r.id)?'0.06':RACE_RES_COMMON.hp5v}</b></span>
+            <span>气回复/5秒 <b>${RACE_RES_COMMON.ep5}</b></span><span>回复/能量 <b>${RACE_RES_COMMON.ep5e}</b></span>
+            <span>体力回复/5秒 <b>${RACE_RES_COMMON.sp5}</b></span><span>回复/体质 <b>${RACE_RES_COMMON.sp5s}</b></span>
           </div></div>
-        <div class="rp-block panel reveal" data-delay="1"><h4>成长系数</h4>${growthBars}
+        <div class="rp-block panel reveal" data-delay="1"><h4>成长系数 <span class="tag" title="代码默认值，未经生产核实">未核实</span></h4>${growthBars}
           <p class="ft-note">每级属性成长 = 种族系数 + 职业系数（逐项相加）。耐力/体质倍率在所有形态中恒为 ×1，故形态表不再列出。</p></div>
       </div>
-      <div class="rp-skill panel reveal"><h4>种族技能 · ${r.racial.name}</h4>
+      <div class="rp-skill panel reveal"><h4>种族技能 · ${r.racial.name} <span class="tag" title="代码默认值，未经生产核实">未核实</span></h4>
         <ul>${r.racial.lines.map(l=>`<li>${l}</li>`).join('')}</ul></div>
-      <div class="rp-block panel reveal" style="margin-bottom:18px"><h4>形态技能 TP 售价</h4>
+      <div class="rp-block panel reveal" style="margin-bottom:18px"><h4>形态技能 TP 售价 <span class="tag" title="代码默认值，未经生产核实">未核实</span></h4>
         <div class="rp-chips">${tp}</div></div>
       ${groups}
       <div class="rp-block panel reveal" style="padding:6px 0 0;border:none;background:none;box-shadow:none">
@@ -186,16 +187,17 @@ function formGroupHTML(g){
 /* ---------------- 通用形态（并入每个种族详情页） ---------------- */
 function universalGroupsHTML(){
   return UNIVERSAL_GROUPS.map(g=>{
+    const verification=`<p class="ft-note"><span class="tag">未核实</span> 形态倍率、耗量、熟练度与运行规则${['ultrainstinct','ultraego'].includes(g.gid)?'、初次购价':''}：代码默认值，未经生产核实。</p>`;
     if(g.absorption){
       return `<div class="form-group reveal"><div class="fg-head"><h5>${g.name}</h5>
         <span class="fg-count">128 形态</span><span class="fg-tp">适用：<b>${g.who}</b></span></div>
-        <div class="info-card panel" style="padding:18px 22px"><p style="font-size:13px;color:var(--dim)">${g.note}</p>
+        ${verification}<div class="info-card panel" style="padding:18px 22px"><p style="font-size:13px;color:var(--dim)">${g.note}</p>
         <details style="margin-top:12px"><summary style="cursor:pointer;color:var(--cyan);font-size:13px;letter-spacing:1px">展开 128 条吸收形态清单 ⌄</summary>
         <div class="mob-chips" style="margin-top:12px">${g.keys.map(kk=>`<span class="mob-chip" style="border-color:rgba(62,226,255,.25);color:#9fe8ff;background:rgba(62,226,255,.05)">${kk.replace(/^majin_|^saga_|^mob_/,'').replace(/_/g,' ')}</span>`).join('')}</div></details></div></div>`;
     }
     return `<div class="form-group reveal"><div class="fg-head"><h5>${g.name}</h5>
       <span class="fg-count">${g.type}</span><span class="fg-tp">适用：<b>${g.who}</b>　售价：<b>${g.price}</b>　导师：<b>${g.master}</b></span></div>
-      ${formTable(g.list)}
+      ${verification}${formTable(g.list)}
       <p class="ft-note">▸ ${g.note}</p></div>`;
   }).join('');
 }
@@ -227,7 +229,7 @@ function kiModal(x){
     <div class="mp-grid">
       ${x.dmg>0?row('伤害倍率','×'+x.dmg)+row('类型修正','×'+t.mult)+row('综合威力','×'+eff):row('定位',x.type==='SHIELD'?'防御护盾（数值为强度）':'战术功能（无伤害）')}
       ${row('施法时间',cast)}${row('移动限制',move)}${row('冷却',x.cd)}${row('TP 售价',x.tp.toLocaleString())}
-      ${x.size?row('尺寸',x.size):''}${x.speed?row('弹速',x.speed):''}
+      ${x.size?row('尺寸',x.size):''}${x.speed!=null?row('弹速',x.speed):''}
       ${row('导师',x.masters||'（无出售渠道）')}
     </div>
     ${x.rest?`<div class="ki-rest">⚑ 种族限制：${x.rest}</div>`:''}
@@ -299,7 +301,7 @@ function kiCard(x,i){
       openModal(`<div class="modal-hero" style="--kc:#ff9d5c"><span class="ki-type" style="--kc:#ff9d5c">打击技</span><h3>${s.cn}</h3></div>
         <p class="modal-desc">${s.desc}</p>
         <div class="mp-grid">${row('伤害倍率','×'+s.dmg)}${row('连段时长',s.dur)}${row('冷却',s.cd)}${row('TP 售价',s.tp.toLocaleString())}${row('导师',s.masters)}</div>
-        <div class="ki-note">打击技吃力量与速度双加成：力量提供 25% 权重，速度是主属性。</div>`);};
+        <div class="ki-note">打击技以近战伤害为基数；力量影响伤害，速度影响冷却与突进等战斗表现。</div>`);};
     c.addEventListener('click',open);
     c.addEventListener('keydown',e=>{if(e.key==='Enter')open();});});
 })();
@@ -309,7 +311,7 @@ function kiCard(x,i){
   const grid=$('#skillGrid');if(!grid)return;
   function priceLadder(prices){
     const max=Math.max(...prices.filter(p=>p>0));
-    const bars=prices.map(p=>p===-1?`<i class="neg" style="height:100%" title="任务/剧情解锁"></i>`
+    const bars=prices.map(p=>p===-1?`<i class="neg" style="height:100%" title="不可用 TP 购买"></i>`
       :`<i style="height:${Math.max(8,p/max*100)}%" title="${p.toLocaleString()} TP"></i>`).join('');
     const first=prices[0]===-1?'任务':prices[0].toLocaleString(),last=prices[prices.length-1]===-1?'任务':prices[prices.length-1].toLocaleString();
     return `<div class="price-ladder">${bars}</div><div class="price-legend"><span>${first} TP</span><span>${last} TP</span></div>`;
@@ -318,7 +320,7 @@ function kiCard(x,i){
     <span class="corner tl"></span><span class="corner br"></span>
     <div class="sk-head"><h5>${s.cn}</h5><span class="lv">${s.lv===1?'1 级':'LV 1–'+s.lv}</span></div>
     ${s.rest?`<div style="margin:2px 0 4px"><span class="tag pk">${s.rest}</span></div>`:''}
-    <p class="sk-eff">${s.eff}</p>${priceLadder(s.prices)}</div>`;
+    <p class="sk-eff">${s.eff}</p>${priceLadder(s.prices)}${s.unverified?`<p class="ft-note"><span class="tag">未核实</span> ${esc(s.unverified)}</p>`:''}</div>`;
   grid.innerHTML=SKILLS.map(card).join('');
   $('#skillSpecialGrid').innerHTML=SKILLS_SPECIAL.map(card).join('');
   $('#tpGrid').innerHTML=TP_SOURCES.map(([v,t])=>`<div class="tp-item panel reveal"><span class="tv">${v}</span><span>${t}</span></div>`).join('');

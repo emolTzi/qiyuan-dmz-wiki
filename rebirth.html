@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>死亡与转世 · 地府复活与神龙转世 — 祈愿龙珠 IDW</title>
-<meta name="description" content="死亡不掉落但进地府：免费 180 秒或付费立即复活；神龙转世 NG+ 系统的门槛、保留规则与新周目加成。">
+<meta name="description" content="地府复活、占卜婆婆付费服务，以及当前开放的一转祈愿转世：等级、基础属性、圣化龙珠与保留规则。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff7a18'/%3E%3Cpolygon points='32,20 34.7,27.8 43,27.9 36.3,32.9 38.8,40.9 32,36 25.2,40.9 27.7,32.9 21,27.9 29.3,27.8' fill='%23c41e14'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/style.css?v=5">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
 <canvas id="stars"></canvas>
@@ -20,15 +20,15 @@
   <header class="page-hero">
     <a class="crumb" href="play.html">← 玩法星域</a>
     <h1>死亡与转世</h1><div class="en">Afterlife &amp; Reincarnation</div>
-    <p class="lead">死亡不掉装备，但要去地府排队复活；战力达标后可以转世进入新周目——属性重练，但形态与技能全部保留。</p>
+    <p class="lead">死亡后进入地府等待复活；完成本世旅程、试炼和圣化龙珠后可祈愿转世。当前开放至第 1 转，摸金死亡另按行动规则结算。</p>
   </header>
 
   <div class="ki-group-title reveal"><h4>死亡会发生什么</h4><div class="line"></div></div>
   <div class="panel reveal" style="padding:18px 22px;font-size:13.5px;color:var(--dim);line-height:1.9">
-    <p>· <b>不会掉落物品</b>：服务器开启了物品保留，死亡时背包/装备都在。</p>
+    <p>· <b>不会掉落物品</b>：服务器开启了物品保留，死亡时背包/装备都在。<span class="tag" title="普通世界死亡保留规则未经生产核实">未核实</span></p>
     <p>· 死亡后以灵魂状态进入<b>地府（阴间）</b>，等待复活。复活二选一：</p>
-    <p>　① <b>免费等待</b>：180 秒后自动复活（等待期内不可做其他事）；</p>
-    <p>　② <b>付费立即复活</b>：按 <span class="kbd">O</span> → 复活服务，支付<b>当前余额的 2%</b> 立刻爬起来——BOSS 战翻车时的救命选项。</p>
+    <p>　① <b>免费等待</b>：默认等待 180 秒后，通过占卜婆婆的复活服务免费复活；不会自动原地复活；</p>
+    <p>　② <b>付费立即复活</b>：在占卜婆婆附近按 <span class="kbd">O</span> → 复活服务，支付<b>当前余额的 2%</b> 跳过剩余等待；不设费用上限，等待结束后免费。</p>
     <p>· 复活后由<b>阎魔大王</b>送回地球。</p>
     <p>· <b>魔人专属</b>：种族技能「自救」允许死亡时原地复活（回复 25% 生命），冷却 1 小时——常打高危内容的魔人等于多一条命。</p>
   </div>
@@ -36,32 +36,32 @@
     地府里也能逛逛——那里是独立维度，阎魔大王、阴间建筑都在；不过正常情况下复活后直接回地球。
   </div>
 
-  <div class="ki-group-title reveal"><h4>神龙转世（NG+ 系统）</h4><div class="line"></div></div>
-  <p class="reveal" style="font-size:13.5px;color:var(--dim);margin:0 0 12px;line-height:1.8">战力达标后可以<b>转世</b>进入新周目：属性大部分清空，但保留形态与技能，换来更快更猛的成长曲线。</p>
+  <div class="ki-group-title reveal"><h4>祈愿转世（五世旅程）</h4><div class="line"></div></div>
+  <p class="reveal" style="font-size:13.5px;color:var(--dim);margin:0 0 12px;line-height:1.8">等级与六项基础属性总和达标，并完成当前章节与试炼后，可用本转圣化龙珠在祈愿坛转世；形态与技能保留，属性按保留率重新分配。</p>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>项目</th><th>规则</th></tr></thead><tbody>
-    <tr><td>入口</td><td><code>/reincarnate</code> 查看资格 → <code>/reincarnate confirm</code> 确认转世（不可逆）</td></tr>
-    <tr><td>门槛（战力 BP）</td><td>1 转 <b>10,000</b> → 2 转 <b>50,000</b> → 3 转 <b>150,000</b> → 4 转 <b>300,000</b>，之后每转 +150,000。不需要龙珠，也不需要做任务</td></tr>
+    <tr><td>入口</td><td><code>/astra next</code> 查看缺项，<code>/astra materials</code> 查材料，<code>/astra balls</code> 查圣化球；在完整祈愿坛选择开始祈愿，再按提示确认。旧 <code>/reincarnate</code> 仅提供引导 <span class="tag" title="旧命令注册与别名未经生产核实">未核实</span></td></tr>
+    <tr><td>门槛（基础属性 / 等级）</td><td>六项基础属性总和：1 转 <b>10,000</b> → 2 转 <b>50,000</b> → 3 转 <b>150,000</b> → 4 转 <b>300,000</b> → 5 转 <b>450,000</b>；每转都需完成旅程与试炼并准备对应圣化龙珠。DMZ 等级依次为 1,500 / 8,000 / 24,000 / 48,000 / 72,000（代码默认）；当前仅开放 1 转</td></tr>
     <tr><td>形态与技能</td><td><b style="color:#59ffa0">全部保留</b>——变强积累不会清零</td></tr>
-    <tr><td>属性保留</td><td>按转数保留可自由重分的部分：1 转 50% → 2 转 40% → 3 转 25% → 4 转 10% → 5 转起 0%（免 TP 重分）</td></tr>
-    <tr><td>TP 成本</td><td>曲线变平：转数越高，买属性的单价增长越慢，后期成长明显提速</td></tr>
-    <tr><td>正念与超负荷</td><td>转世提升「正念」上限（120 起，每转 +50）与气释放超负荷时限——高级气功玩法的资源上限</td></tr>
-    <tr><td>新周目（NG+）</td><td>每转 1 次，剧情与副本敌人强度 <b>+75%</b>，任务/掉落奖励 <b>+50%</b>——世界随你一起变难、变富</td></tr>
-    <tr><td>上限</td><td>99 转</td></tr>
+    <tr><td>属性保留</td><td>六维回到初始模板；超出初始模板的已分配点 + 待分配点，按 1 转 50% → 2 转 40% → 3 转 25% → 4 转 10% → 5 转 0% 向下取整后放入待分配池，可免 TP 重分</td></tr>
+    <tr><td>TP 成本</td><td>0–5 转的 TP 成本斜率依次为 1 / 0.75 / 0.5 / 0.25 / 0.25 / 0.25</td></tr>
+    <tr><td>正念与超负荷</td><td>普通气功上限 100%；超负荷至少需要 2 转，当前开放上限为 1 转，因此暂不可修炼超负荷。正念由独立技能等级控制</td></tr>
+    <tr><td>五世龙珠</td><td>地球 7 颗 → 那美克星 7 颗 → 大魔 3 颗 → 西里尔 2 颗 → 超级 7 颗；按对应章节完成试炼与圣化，后四转尚未开放</td></tr>
+    <tr><td>上限</td><td>最多 5 转；当前开放至 1 转</td></tr>
     </tbody></table></div>
 
   <div class="ki-group-title reveal"><h4>三个容易混淆的系统</h4><div class="line"></div></div>
   <div class="ftable-scroll reveal"><table class="ft">
     <thead><tr><th>系统</th><th>入口</th><th>效果</th></tr></thead><tbody>
-    <tr><td><b>神龙转世</b></td><td><code>/reincarnate</code></td><td>保留形态技能、清减属性重练，敌人与奖励随转数增强（本服现行系统）</td></tr>
+    <tr><td><b>神龙转世</b></td><td><code>/astra next</code> → 祈愿坛</td><td>保留形态技能，按本转保留率返还待分配点；需本转旅程、试炼与圣化龙珠</td></tr>
     <tr><td><b>换种族</b></td><td>找丹迪对话重置</td><td><b style="color:var(--red)">清空一切</b>（属性/技能/任务进度）并回到创角流程重选种族</td></tr>
     <tr><td><b>洗点</b></td><td>丹迪「重置属性」/ 波伦伽许愿「属性重分配」</td><td>只返还已分配属性点，不动其他任何进度</td></tr>
     </tbody></table></div>
   <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
-    服务器还规划了大型「祈愿转世」资料片玩法（五转五龙、圣化龙珠、召龙仪式），目前<b>尚未开放</b>，以官方公告为准。
+    「祈愿转世」已开启，当前可完成<b>第 1 转</b>。祈愿确认默认限时 180 秒（代码默认）；按坛上提示完成确认，后续转数以开放进度为准。
   </div>
 
 </div></main>
-<script src="assets/js/cosmos.js?v=5"></script>
+<script src="assets/js/cosmos.js?v=7"></script>
 </body>
 </html>

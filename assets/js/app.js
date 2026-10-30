@@ -96,7 +96,7 @@ function formTable(list){
       if(v===null||v===undefined)return `<td class="dr na">—</td>`;
       return `<td class="dr${v<0?' neg':''}">${v}</td>`;};
     const mas=x.mas.every(v=>v===null)?'<span class="na">—</span>':x.mas.map(v=>v===null?'—':v).join(' / ');
-    const notes=x.notes.map(([k,t])=>`<span class="ntag ${k}">${esc(t)}</span>`).join('')||'<span class="na">—</span>';
+    const notes=x.notes.map(([k,t])=>`<span class="${k==='unverified'?'tag':'ntag '+k}">${esc(t)}</span>`).join('')||'<span class="na">—</span>';
     const name=x.name?`<span class="cn">${x.name}</span><span class="fid">${x.id}</span>`
                      :`<span class="fid" style="font-size:12px">${x.id}</span>`;
     return `<tr><td>${name}</td><td>${x.unlock}</td>
@@ -111,7 +111,7 @@ function formTable(list){
     <tbody>${rows}</tbody></table></div>`;
 }
 function formGroupHTML(g){
-  const tp=g.tp?`<span class="fg-tp">TP 售价：<b>${g.tp.map(p=>p===-1?'任务解锁':p).join(' / ')}</b></span>`:'';
+  const tp=g.tp?`<span class="fg-tp">TP 售价：<b>${g.tp.map(p=>p===-1?'特殊解锁':p).join(' / ')}</b></span>`:'';
   return `<div class="form-group reveal">
     <div class="fg-head"><h5>${g.group}</h5><span class="fg-id">${g.gid}</span>
     <span class="fg-count">${g.list.length} 形态</span>${tp}</div>
@@ -148,7 +148,7 @@ function barRow(k,v,max,color){const w=Math.round(Math.min(v,max)/max*100);
 function racePanel(r){
   const statsBars=r.stats.map((v,i)=>barRow(STAT_KEYS[i],v,5,STAT_META[i].color)).join('');
   const growthBars=r.growth.map((v,i)=>barRow(GROWTH_KEYS[i],v,2,'#3ee2ff')).join('');
-  const tp=r.tp.map(([g,arr])=>`<span class="tag ${arr[0]===-1?'rd':'gold'}">${g}：${arr.map(p=>p===-1?'任务解锁':p.toLocaleString()).join(' / ')}</span>`).join('');
+  const tp=r.tp.map(([g,arr])=>`<span class="tag ${arr[0]===-1?'rd':'gold'}">${g}：${arr.map(p=>p===-1?'特殊解锁':p.toLocaleString()).join(' / ')}</span>`).join('');
   const groups=r.forms.map(g=>{
     const tpArr=r.tp.find(t=>t[0]===g.group);
     return formGroupHTML({...g,tp:tpArr?tpArr[1]:null});
@@ -166,9 +166,9 @@ function racePanel(r){
     <div class="rp-cols">
       <div class="rp-block panel reveal"><h4>初始六维 · Base Stats</h4>${statsBars}
         <div class="res-mini" style="margin-top:14px">
-          <span>HP5 基础 <b>${RACE_RES_COMMON.hp5}</b></span><span>HP5/VIT <b>${RACE_RES_COMMON.hp5v}</b></span>
+          <span>HP5 基础 <b>${!['human','saiyan','namekian','frostdemon','bioandroid','majin'].includes(r.id)?'5':RACE_RES_COMMON.hp5}</b></span><span>HP5/VIT <b>${!['human','saiyan','namekian','frostdemon','bioandroid','majin'].includes(r.id)?'0.06':RACE_RES_COMMON.hp5v}</b></span>
           <span>EP5 基础 <b>${RACE_RES_COMMON.ep5}</b></span><span>EP5/ENE <b>${RACE_RES_COMMON.ep5e}</b></span>
-          <span>SP5 基础 <b>${RACE_RES_COMMON.sp5}</b></span><span>SP5/STM <b>${RACE_RES_COMMON.sp5s}</b></span>
+          <span>SP5 基础 <b>${RACE_RES_COMMON.sp5}</b></span><span>SP5/VIT <b>${RACE_RES_COMMON.sp5s}</b></span>
         </div></div>
       <div class="rp-block panel reveal" data-delay="1"><h4>成长系数 · Scaling</h4>${growthBars}
         <p class="ft-note">每级属性成长 = 种族系数 + 职业系数（逐项相加）；最终初始属性同理。STM/VIT 倍率在所有形态中恒为 ×1，故形态表未列出。</p></div>
@@ -269,7 +269,7 @@ function renderStrikes(){
 /* ---------------- 技能 ---------------- */
 function priceLadder(prices){
   const max=Math.max(...prices.filter(p=>p>0));
-  const bars=prices.map(p=>p===-1?`<i class="neg" style="height:100%" title="任务/剧情解锁"></i>`
+  const bars=prices.map(p=>p===-1?`<i class="neg" style="height:100%" title="不可用 TP 购买"></i>`
     :`<i style="height:${Math.max(8,p/max*100)}%" title="${p.toLocaleString()} TP"></i>`).join('');
   const first=prices[0]===-1?'任务':prices[0].toLocaleString(),last=prices[prices.length-1]===-1?'任务':prices[prices.length-1].toLocaleString();
   return `<div class="price-ladder">${bars}</div><div class="price-legend"><span>${first} TP</span><span>${last} TP</span></div>`;
@@ -278,7 +278,7 @@ function skillCard(s,i){return `<div class="skill-card panel reveal" data-delay=
   <span class="corner tl"></span><span class="corner br"></span>
   <div class="sk-head"><h5>${s.cn}</h5><span class="lv">${s.lv===1?'1 级':'LV 1–'+s.lv}</span></div>
   <div class="sid">${s.id}${s.rest?` · <span style="color:var(--rose)">${s.rest}</span>`:''}</div>
-  <p class="sk-eff">${s.eff}</p>${priceLadder(s.prices)}</div>`;}
+  <p class="sk-eff">${s.eff}</p>${priceLadder(s.prices)}${s.unverified?`<p class="ft-note"><span class="tag">未核实</span> ${esc(s.unverified)}</p>`:''}</div>`;}
 function renderSkills(){
   $('#skillGrid').innerHTML=SKILLS.map(skillCard).join('');
   $('#skillSpecialGrid').innerHTML=SKILLS_SPECIAL.map(skillCard).join('');
