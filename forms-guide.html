@@ -61,6 +61,18 @@
     <tr><td>超蓝完美</td><td>超蓝进化 → 超蓝完美</td><td>「神之形态」4 级 + 超蓝进化 <b>35%</b> 熟练度。</td></tr>
     <tr><td>野兽形态</td><td>Beast</td><td>从<b>悟饭</b>导师学习，仅需 1 级；服务器配置为师傅解锁，技能价格 650,000 TP。</td></tr>
     </tbody></table></div>
+  <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8;overflow-wrap:anywhere">
+    <b style="color:var(--gold)">超五满熟练度倍率（按公式计算）</b>
+    <p>赛亚人 / 半赛亚人的巨猿之力超五（<code>supersaiyan5</code>）基础倍率均为 STR / SKP / PWR <b>8.0</b>、DEF <b>5.5</b>，其余已配置属性 STM / VIT / ENE / SPEED 均为 <b>1.0</b>。出处：<code>qa/prod096/forms/saiyan/forms/oozaru.json:255-262</code>；<code>qa/prod096/forms/half_saiyan/forms/oozaru.json:258-265</code>。</p>
+    <p><code>maxStatsMultiplier</code> 均为 <b>1.6</b>（出处：<code>qa/prod096/forms/saiyan/forms/oozaru.json:263</code>；<code>qa/prod096/forms/half_saiyan/forms/oozaru.json:266</code>）。两族该形态均未配置 <code>maxMastery</code>（对应文件的 <code>supersaiyan5</code> 段分别为 228-266 行、231-269 行），按源码默认值 <b>100</b> 计算满熟练度（出处：<code>src/main/java/com/dmzrevamp/revamp/DmzRevampHelper.java:480</code>）。</p>
+    <p>本形态的实际倍率 = 1 + (基础 − 1) × (1 + 熟练度 × (maxStats − 1) / maxMastery)，其中 maxStats 指 <code>maxStatsMultiplier</code>。出处：<code>src/main/java/com/dmzrevamp/revamp/DmzRevampHelper.java:482-483</code>。</p>
+    <p>按上述配置与公式计算，满熟练度时括号内的系数为 1 + 100 × (1.6 − 1) / 100 = <b>1.6</b>：</p>
+    <ul>
+      <li>STR / SKP / PWR：1 + (8.0 − 1) × 1.6 = 1 + 7 × 1.6 = <b>12.2 倍</b>。</li>
+      <li>DEF：1 + (5.5 − 1) × 1.6 = 1 + 4.5 × 1.6 = <b>8.2 倍</b>。</li>
+      <li>STM / VIT / ENE / SPEED：1 + (1.0 − 1) × 1.6 = <b>1.0 倍</b>。</li>
+    </ul>
+  </div>
   <div class="panel reveal" style="padding:14px 20px;margin-top:12px;font-size:13px;color:var(--dim);line-height:1.8">
     <b style="color:var(--red)">注意：</b>赛亚人 / 半赛亚人的「传说形态」价格数组中有 <b>-1</b> 阶段，表示该阶段不能按普通 TP 价格购买，请查看技能菜单或询问管理员确认获得途径。「神之形态」在技能界面购买，每级 10,000,000 TP；不再通过旧仪式许愿获取。
   </div>
